@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="Home">
       <h1>Bowie's Books!</h1>
-      <div className="grid">
+      <div className="image-grid">
         <div className="grid-item">
           <Link to="/bonne-adventure">
             <img src="/books/bonne-adventure/0-cover.webp" />
