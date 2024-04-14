@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useParams, useNavigate } from 'react-router-dom'
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom'
 
 const PAGES = [
     '/books/bonne-adventure/0-cover.webp',
