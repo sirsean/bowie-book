@@ -58,18 +58,10 @@ function PageRoute() {
     return <Page page={parseInt(page, 10)} />;
 }
 
-function Cover() {
-    return (
-        <div>
-            <Page page={0} />
-        </div>
-    )
-}
-
 export default function BonneAdventure() {
     return (
         <Routes>
-            <Route path="/" element={<Cover />} />
+            <Route path="/" element={<Page page={0} />} />
             <Route path="/:page" element={<PageRoute />} />
         </Routes>
     );
