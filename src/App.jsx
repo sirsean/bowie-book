@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import BonneAdventure from './books/bonne-adventure/BonneAdventure'
 import DragonFighter from './books/dragon-fighter/DragonFighter'
 import SkywardBound from './books/skyward-bound/SkywardBound'
+import ZiggyTheBunny from './books/ziggy-the-bunny/ZiggyTheBunny'
 import './App.css'
 
 function Home() {
@@ -25,6 +25,11 @@ function Home() {
             <img src="/books/skyward-bound/0.webp" />
           </Link>
         </div>
+        <div className="grid-item">
+          <Link to="/ziggy-the-bunny">
+            <img src="/books/ziggy-the-bunny/0-cover.webp" />
+          </Link>
+        </div>
       </div>
     </div>
   )
@@ -38,6 +43,7 @@ function App() {
         <Route path="/bonne-adventure/*" element={<BonneAdventure />} />
         <Route path="/dragon-fighter/*" element={<DragonFighter />} />
         <Route path="/skyward-bound/*" element={<SkywardBound />} />
+        <Route path="/ziggy-the-bunny/*" element={<ZiggyTheBunny />} />
       </Routes>
     </BrowserRouter>
   )
