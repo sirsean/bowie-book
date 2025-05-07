@@ -27,6 +27,11 @@ const books: BookPreview[] = [
     id: 'ziggy-the-bunny',
     title: 'Ziggy the Bunny',
     coverImage: '/books/ziggy-the-bunny/0-cover.webp'
+  },
+  {
+    id: 'super-bowie',
+    title: 'Super Bowie',
+    coverImage: '/books/super-bowie/0-cover.jpg'
   }
 ];
 
