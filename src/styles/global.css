@@ -1,0 +1,102 @@
+@import './reset.css';
+@import './variables.css';
+
+@font-face {
+  font-family: 'Texturina';
+  font-weight: 300 900; /* Support variable font weights */
+  font-style: normal;
+  src: url(/fonts/Texturina-VariableFont_opsz,wght.ttf) format('truetype');
+  font-display: swap; /* Improves page load performance */
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family-main);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Base Typography */
+h1 {
+  font-size: 2.5rem;
+  line-height: var(--line-height-heading);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: var(--text-shadow);
+}
+
+/* Base link styles */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Button styles */
+button {
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-button-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+  min-height: 44px; /* Minimum touch target size */
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+  border-color: var(--color-primary);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Helper classes */
+.spacer {
+  flex-grow: 1;
+}
+
+/* Basic Responsive Adjustments */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  button {
+    font-size: 1rem;
+  }
+}
+
+/* iPad Specific */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}

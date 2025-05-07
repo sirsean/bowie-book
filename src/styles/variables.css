@@ -1,0 +1,79 @@
+:root {
+  /* Rainbow Color Palette */
+  --color-red: #ff5e78;
+  --color-orange: #ffae22;
+  --color-yellow: #ffd166;
+  --color-green: #06d6a0;
+  --color-blue: #118ab2;
+  --color-purple: #9b5de5;
+  --color-pink: #ff70a6;
+  
+  /* UI Colors */
+  --color-primary: var(--color-purple);
+  --color-primary-hover: var(--color-pink);
+  --color-secondary: var(--color-green);
+  --color-background: #5360fc; /* Bright blue background */
+  --color-background-gradient: linear-gradient(135deg, #5360fc, #7056f5);
+  --color-text: white;
+  --color-text-overlay: white;
+  --color-overlay-bg: rgba(83, 96, 252, 0.85);
+  
+  /* Button Colors */
+  --color-button-red: rgba(255, 94, 120, 0.9);
+  --color-button-orange: rgba(255, 174, 34, 0.9);
+  --color-button-yellow: rgba(255, 209, 102, 0.9);
+  --color-button-green: rgba(6, 214, 160, 0.9);
+  --color-button-blue: rgba(17, 138, 178, 0.9);
+  --color-button-purple: rgba(155, 93, 229, 0.9);
+  
+  /* Shadows and Effects */
+  --rainbow-gradient: linear-gradient(
+    to right, 
+    var(--color-red),
+    var(--color-orange),
+    var(--color-yellow),
+    var(--color-green),
+    var(--color-blue),
+    var(--color-purple)
+  );
+
+  /* Typography */
+  --font-family-main: 'Texturina', serif;
+  --font-size-base: 16px;
+  --font-size-large: 1.5em;
+  --font-size-xl: 2em;
+  --font-size-xxl: 3.2em;
+  --line-height-base: 1.5;
+  --line-height-heading: 1.1;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Border Radius */
+  --border-radius-sm: 8px;
+  --border-radius: 12px;
+  --border-radius-lg: 20px;
+
+  /* Shadows */
+  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  --rainbow-shadow: 0 8px 30px rgba(155, 93, 229, 0.4);
+
+  /* Z-index levels */
+  --z-index-base: 1;
+  --z-index-overlay: 5;
+  --z-index-navbar: 10;
+
+  /* Transitions */
+  --transition-speed: 0.25s;
+
+  /* Breakpoints */
+  --breakpoint-small: 400px;
+  --breakpoint-medium: 600px;
+  --breakpoint-large: 900px;
+  --breakpoint-xl: 1200px;
+}
