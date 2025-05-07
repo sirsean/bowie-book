@@ -62,8 +62,8 @@
 }
 
 .Page img {
-  width: calc(100vw-60px);
-  height: calc(100vw-60px);
+  width: calc(100vw - 60px);
+  height: calc(100vw - 60px);
   object-fit: cover;
 
   position: absolute;
@@ -73,7 +73,7 @@
 
   @media (orientation: landscape) {
     width: auto;
-    height: calc(100vh-60px);
+    height: calc(100vh - 60px);
     left: 50%;
     top: calc(50%); /* Adjust for navbar height */
     transform: translate(-50%, calc(-50%));
