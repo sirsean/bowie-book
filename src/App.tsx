@@ -5,6 +5,7 @@ import DragonFighter from './books/dragon-fighter/DragonFighter';
 import SkywardBound from './books/skyward-bound/SkywardBound';
 import ZiggyTheBunny from './books/ziggy-the-bunny/ZiggyTheBunny';
 import SuperBowie from './books/super-bowie/SuperBowie';
+import SuperkittySavesBunnytown from './books/superkitty-saves-bunnytown/SuperkittySavesBunnytown';
 import './styles/global.css';
 
 /**
@@ -20,6 +21,7 @@ function App(): JSX.Element {
         <Route path="/skyward-bound/*" element={<SkywardBound />} />
         <Route path="/ziggy-the-bunny/*" element={<ZiggyTheBunny />} />
         <Route path="/super-bowie/*" element={<SuperBowie />} />
+        <Route path="/superkitty-saves-bunnytown/*" element={<SuperkittySavesBunnytown />} />
       </Routes>
     </BrowserRouter>
   );

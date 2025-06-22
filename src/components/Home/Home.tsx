@@ -32,6 +32,11 @@ const books: BookPreview[] = [
     id: 'super-bowie',
     title: 'Super Bowie',
     coverImage: '/books/super-bowie/0-cover.jpg'
+  },
+  {
+    id: 'superkitty-saves-bunnytown',
+    title: 'Superkitty Saves Bunnytown',
+    coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png'
   }
 ];
 
