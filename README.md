@@ -45,6 +45,14 @@ This vibrant application provides a delightful reading experience for children's
 - `npm run format` - Formats code using Prettier
 - `npm run typecheck` - Runs TypeScript type checking
 - `npm run preview` - Previews the production build locally
+- `npm run test` - Runs complete test suite (unit + E2E)
+- `npm run test:watch` - Runs unit tests in watch mode
+- `npm run test:unit` - Runs unit tests once
+- `npm run test:unit:watch` - Runs unit tests in watch mode
+- `npm run test:coverage` - Runs unit tests with coverage report
+- `npm run e2e` - Runs end-to-end tests
+- `npm run e2e:ci` - Runs end-to-end tests with CI reporter
+- `npm run ci:test` - Runs complete test suite with coverage and CI reporters
 
 ## 📱 Deployment
 
@@ -117,3 +125,10 @@ The application uses a functional component architecture with TypeScript:
 - [Vite](https://vitejs.dev/) - Build tool and development server
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
+- [Vitest](https://vitest.dev/) - Unit testing framework
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - Component testing utilities
+- [Playwright](https://playwright.dev/) - End-to-end testing framework
+
+## 📖 Documentation
+
+- [Testing Guidelines](./docs/TESTING_GUIDELINES.md) - Comprehensive guide for running and writing tests

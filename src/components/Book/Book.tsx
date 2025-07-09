@@ -128,7 +128,7 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
       
       {/* Text overlay at bottom */}
       {text && (
-        <div className={styles.textOverlay}>
+        <div className={styles.textOverlay} data-testid="text-overlay">
           {text}
         </div>
       )}

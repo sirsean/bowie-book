@@ -1,0 +1,125 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home Component > Grid Layout > matches grid layout snapshot 1`] = `
+<div
+  class="_container_d6eec2"
+>
+  <h1
+    class="_title_d6eec2"
+  >
+    Bowie's Books!
+  </h1>
+  <div
+    class="_imageGrid_d6eec2"
+  >
+    <div
+      class="_gridItem_d6eec2"
+    >
+      <a
+        href="/bonne-adventure"
+      >
+        <img
+          alt="Bonne Adventure Cover"
+          loading="lazy"
+          src="/books/bonne-adventure/0-cover.webp"
+        />
+        <div
+          class="_gridItemTitle_d6eec2"
+        >
+          Bonne Adventure
+        </div>
+      </a>
+    </div>
+    <div
+      class="_gridItem_d6eec2"
+    >
+      <a
+        href="/dragon-fighter"
+      >
+        <img
+          alt="Dragon Fighter Cover"
+          loading="lazy"
+          src="/books/dragon-fighter/0-cover.webp"
+        />
+        <div
+          class="_gridItemTitle_d6eec2"
+        >
+          Dragon Fighter
+        </div>
+      </a>
+    </div>
+    <div
+      class="_gridItem_d6eec2"
+    >
+      <a
+        href="/skyward-bound"
+      >
+        <img
+          alt="Skyward Bound Cover"
+          loading="lazy"
+          src="/books/skyward-bound/0.webp"
+        />
+        <div
+          class="_gridItemTitle_d6eec2"
+        >
+          Skyward Bound
+        </div>
+      </a>
+    </div>
+    <div
+      class="_gridItem_d6eec2"
+    >
+      <a
+        href="/ziggy-the-bunny"
+      >
+        <img
+          alt="Ziggy the Bunny Cover"
+          loading="lazy"
+          src="/books/ziggy-the-bunny/0-cover.webp"
+        />
+        <div
+          class="_gridItemTitle_d6eec2"
+        >
+          Ziggy the Bunny
+        </div>
+      </a>
+    </div>
+    <div
+      class="_gridItem_d6eec2"
+    >
+      <a
+        href="/super-bowie"
+      >
+        <img
+          alt="Super Bowie Cover"
+          loading="lazy"
+          src="/books/super-bowie/0-cover.jpg"
+        />
+        <div
+          class="_gridItemTitle_d6eec2"
+        >
+          Super Bowie
+        </div>
+      </a>
+    </div>
+    <div
+      class="_gridItem_d6eec2"
+    >
+      <a
+        href="/superkitty-saves-bunnytown"
+      >
+        <img
+          alt="Superkitty Saves Bunnytown Cover"
+          loading="lazy"
+          src="/books/superkitty-saves-bunnytown/superkitty-cover.png"
+        />
+        <div
+          class="_gridItemTitle_d6eec2"
+        >
+          Superkitty Saves Bunnytown
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;
