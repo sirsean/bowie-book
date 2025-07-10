@@ -2,13 +2,13 @@ import Book from '../../components/Book/Book';
 
 /**
  * SkywardBound book component
- * 
+ *
  * Displays an interactive storybook about a mother bear who works with airplanes
  * and returns to her princess daughter after her adventures in the sky.
  */
 export default function SkywardBound(): JSX.Element {
   const bookKey = 'skyward-bound';
-  
+
   const images = [
     '/books/skyward-bound/0.webp',
     '/books/skyward-bound/1.webp',
@@ -18,7 +18,7 @@ export default function SkywardBound(): JSX.Element {
     '/books/skyward-bound/5.webp',
     '/books/skyward-bound/6.webp',
   ];
-  
+
   const texts = [
     ``,
     `In a land where butterflies could color the sky,
@@ -64,6 +64,6 @@ export default function SkywardBound(): JSX.Element {
     "Here in my arms, you'll forever stay,
     My little princess, every night and every day."`,
   ];
-  
+
   return <Book bookKey={bookKey} images={images} texts={texts} />;
 }

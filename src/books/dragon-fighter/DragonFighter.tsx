@@ -2,13 +2,13 @@ import Book from '../../components/Book/Book';
 
 /**
  * DragonFighter book component
- * 
+ *
  * Displays an interactive storybook about Princess Bowie who confronts a dragon
  * and turns an enemy into a friend through kindness.
  */
 export default function DragonFighter(): JSX.Element {
   const bookKey = 'dragon-fighter';
-  
+
   const images = [
     '/books/dragon-fighter/0-cover.webp',
     '/books/dragon-fighter/1.webp',
@@ -21,7 +21,7 @@ export default function DragonFighter(): JSX.Element {
     '/books/dragon-fighter/8.webp',
     '/books/dragon-fighter/9.webp',
   ];
-  
+
   const texts = [
     'Princess Bowie: Dragon Fighter',
     `In a magical kingdom among the clouds, there lived a brave princess named Bowie. Her home was a splendid fairy castle, where she spent her days adventuring on her majestic unicorn, Sparkle.`,
@@ -35,6 +35,6 @@ export default function DragonFighter(): JSX.Element {
     `Princess Bowie became a hero, not just for her bravery but for her kindness. The kingdom was safe and happy, with a new friend to help keep it that way.`,
     `And so, Princess Bowie, Sparkle the unicorn, and the dragon lived happily ever after, proving that friendship and understanding can turn foes into friends.`,
   ];
-  
+
   return <Book bookKey={bookKey} images={images} texts={texts} />;
 }

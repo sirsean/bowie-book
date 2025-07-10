@@ -11,33 +11,33 @@ const books: BookPreview[] = [
   {
     id: 'bonne-adventure',
     title: 'Bonne Adventure',
-    coverImage: '/books/bonne-adventure/0-cover.webp'
+    coverImage: '/books/bonne-adventure/0-cover.webp',
   },
   {
     id: 'dragon-fighter',
     title: 'Dragon Fighter',
-    coverImage: '/books/dragon-fighter/0-cover.webp'
+    coverImage: '/books/dragon-fighter/0-cover.webp',
   },
   {
     id: 'skyward-bound',
     title: 'Skyward Bound',
-    coverImage: '/books/skyward-bound/0.webp'
+    coverImage: '/books/skyward-bound/0.webp',
   },
   {
     id: 'ziggy-the-bunny',
     title: 'Ziggy the Bunny',
-    coverImage: '/books/ziggy-the-bunny/0-cover.webp'
+    coverImage: '/books/ziggy-the-bunny/0-cover.webp',
   },
   {
     id: 'super-bowie',
     title: 'Super Bowie',
-    coverImage: '/books/super-bowie/0-cover.jpg'
+    coverImage: '/books/super-bowie/0-cover.jpg',
   },
   {
     id: 'superkitty-saves-bunnytown',
     title: 'Superkitty Saves Bunnytown',
-    coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png'
-  }
+    coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png',
+  },
 ];
 
 /**
@@ -46,16 +46,12 @@ const books: BookPreview[] = [
 const Home = (): JSX.Element => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Bowie's Books!</h1>
+      <h1 className={styles.title}>Bowie&apos;s Books!</h1>
       <div className={styles.imageGrid}>
         {books.map((book) => (
           <div key={book.id} className={styles.gridItem}>
             <Link to={`/${book.id}`}>
-              <img 
-                src={book.coverImage} 
-                alt={`${book.title} Cover`} 
-                loading="lazy"
-              />
+              <img src={book.coverImage} alt={`${book.title} Cover`} loading="lazy" />
               <div className={styles.gridItemTitle}>{book.title}</div>
             </Link>
           </div>

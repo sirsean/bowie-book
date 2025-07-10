@@ -6,13 +6,13 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src'),
     },
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
   },
   build: {
     sourcemap: true,
@@ -20,8 +20,8 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-dom', 'react-router-dom'],
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 });

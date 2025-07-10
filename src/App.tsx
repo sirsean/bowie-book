@@ -9,7 +9,9 @@ const DragonFighter = lazy(() => import('./books/dragon-fighter/DragonFighter'))
 const SkywardBound = lazy(() => import('./books/skyward-bound/SkywardBound'));
 const ZiggyTheBunny = lazy(() => import('./books/ziggy-the-bunny/ZiggyTheBunny'));
 const SuperBowie = lazy(() => import('./books/super-bowie/SuperBowie'));
-const SuperkittySavesBunnytown = lazy(() => import('./books/superkitty-saves-bunnytown/SuperkittySavesBunnytown'));
+const SuperkittySavesBunnytown = lazy(
+  () => import('./books/superkitty-saves-bunnytown/SuperkittySavesBunnytown')
+);
 
 /**
  * Main App component with routes to the home page and all books

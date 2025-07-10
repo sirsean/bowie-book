@@ -1,6 +1,4 @@
-export interface BookProps {
-  // No props needed currently, as book components extend from Book class
-}
+export type BookProps = Record<string, never>;
 
 export interface PageProps {
   bookKey: string;

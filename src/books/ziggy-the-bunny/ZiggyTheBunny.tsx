@@ -2,13 +2,13 @@ import Book from '../../components/Book/Book';
 
 /**
  * ZiggyTheBunny book component
- * 
+ *
  * Displays an interactive storybook about Princess Bowie who travels to space
  * and befriends an alien bunny named Ziggy.
  */
 export default function ZiggyTheBunny(): JSX.Element {
   const bookKey = 'ziggy-the-bunny';
-  
+
   const images = [
     '/books/ziggy-the-bunny/0-cover.webp',
     '/books/ziggy-the-bunny/1.webp',
@@ -18,7 +18,7 @@ export default function ZiggyTheBunny(): JSX.Element {
     '/books/ziggy-the-bunny/5.webp',
     '/books/ziggy-the-bunny/6.webp',
   ];
-  
+
   const texts = [
     'Ziggy the Bunny',
     `Princess Bowie, wearing her sparkly space suit, waves goodbye to her friends and family. With a grand countdown, her candy-colored rocket blasts off from the magical fairy castle, leaving a trail of shimmering stardust.`,
@@ -28,6 +28,6 @@ export default function ZiggyTheBunny(): JSX.Element {
     `With Ziggy nestled safely in the rocket, they soar through a tapestry of twinkling stars and swirling galaxies, sharing stories of bravery and kindness. As they approach Bowie's planet, the fairy castle shimmers in the distance, welcoming them home.`,
     `Princess Bowie and Ziggy, the alien bunny, become inseparable friends, exploring the magic of the fairy castle together. Their friendship stands as a beautiful reminder that kindness and curiosity can bridge worlds.`,
   ];
-  
+
   return <Book bookKey={bookKey} images={images} texts={texts} />;
 }

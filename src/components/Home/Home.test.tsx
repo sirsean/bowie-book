@@ -13,7 +13,6 @@ const renderWithRouter = (initialEntries: string[] = ['/']) => {
 };
 
 describe('Home Component', () => {
-
   describe('Book Cards Rendering', () => {
     it('renders 6 book cards with correct cover images and alt text', () => {
       renderWithRouter();
@@ -29,7 +28,10 @@ describe('Home Component', () => {
         { title: 'Skyward Bound', coverImage: '/books/skyward-bound/0.webp' },
         { title: 'Ziggy the Bunny', coverImage: '/books/ziggy-the-bunny/0-cover.webp' },
         { title: 'Super Bowie', coverImage: '/books/super-bowie/0-cover.jpg' },
-        { title: 'Superkitty Saves Bunnytown', coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png' }
+        {
+          title: 'Superkitty Saves Bunnytown',
+          coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png',
+        },
       ];
 
       expectedBooks.forEach((book, index) => {
@@ -49,17 +51,17 @@ describe('Home Component', () => {
         'Skyward Bound',
         'Ziggy the Bunny',
         'Super Bowie',
-        'Superkitty Saves Bunnytown'
+        'Superkitty Saves Bunnytown',
       ];
 
-      expectedTitles.forEach(title => {
+      expectedTitles.forEach((title) => {
         expect(screen.getByText(title)).toBeInTheDocument();
       });
     });
 
     it('renders main title "Bowie\'s Books!"', () => {
       renderWithRouter();
-      
+
       expect(screen.getByText("Bowie's Books!")).toBeInTheDocument();
     });
   });
@@ -70,7 +72,9 @@ describe('Home Component', () => {
       renderWithRouter();
 
       // Test clicking on the first book (Bonne Adventure)
-      const bonneAdventureLink = screen.getByRole('link', { name: /bonne adventure cover bonne adventure/i });
+      const bonneAdventureLink = screen.getByRole('link', {
+        name: /bonne adventure cover bonne adventure/i,
+      });
       await user.click(bonneAdventureLink);
 
       // Check that the link has the correct href
@@ -81,7 +85,9 @@ describe('Home Component', () => {
       const user = userEvent.setup();
       renderWithRouter();
 
-      const dragonFighterLink = screen.getByRole('link', { name: /dragon fighter cover dragon fighter/i });
+      const dragonFighterLink = screen.getByRole('link', {
+        name: /dragon fighter cover dragon fighter/i,
+      });
       await user.click(dragonFighterLink);
 
       expect(dragonFighterLink).toHaveAttribute('href', '/dragon-fighter');
@@ -91,7 +97,9 @@ describe('Home Component', () => {
       const user = userEvent.setup();
       renderWithRouter();
 
-      const skywardBoundLink = screen.getByRole('link', { name: /skyward bound cover skyward bound/i });
+      const skywardBoundLink = screen.getByRole('link', {
+        name: /skyward bound cover skyward bound/i,
+      });
       await user.click(skywardBoundLink);
 
       expect(skywardBoundLink).toHaveAttribute('href', '/skyward-bound');
@@ -101,7 +109,9 @@ describe('Home Component', () => {
       const user = userEvent.setup();
       renderWithRouter();
 
-      const ziggyLink = screen.getByRole('link', { name: /ziggy the bunny cover ziggy the bunny/i });
+      const ziggyLink = screen.getByRole('link', {
+        name: /ziggy the bunny cover ziggy the bunny/i,
+      });
       await user.click(ziggyLink);
 
       expect(ziggyLink).toHaveAttribute('href', '/ziggy-the-bunny');
@@ -121,7 +131,9 @@ describe('Home Component', () => {
       const user = userEvent.setup();
       renderWithRouter();
 
-      const superkittyLink = screen.getByRole('link', { name: /superkitty saves bunnytown cover superkitty saves bunnytown/i });
+      const superkittyLink = screen.getByRole('link', {
+        name: /superkitty saves bunnytown cover superkitty saves bunnytown/i,
+      });
       await user.click(superkittyLink);
 
       expect(superkittyLink).toHaveAttribute('href', '/superkitty-saves-bunnytown');
@@ -138,10 +150,10 @@ describe('Home Component', () => {
         'Skyward Bound Cover',
         'Ziggy the Bunny Cover',
         'Super Bowie Cover',
-        'Superkitty Saves Bunnytown Cover'
+        'Superkitty Saves Bunnytown Cover',
       ];
 
-      expectedAltTexts.forEach(altText => {
+      expectedAltTexts.forEach((altText) => {
         expect(screen.getByAltText(altText)).toBeInTheDocument();
       });
     });
@@ -152,7 +164,7 @@ describe('Home Component', () => {
       const links = screen.getAllByRole('link');
       expect(links).toHaveLength(6);
 
-      links.forEach(link => {
+      links.forEach((link) => {
         expect(link).toHaveAttribute('href');
         expect(link.getAttribute('href')).toMatch(/^\/[a-z-]+$/);
       });
@@ -164,7 +176,7 @@ describe('Home Component', () => {
       renderWithRouter();
 
       const bookCovers = screen.getAllByRole('img');
-      bookCovers.forEach(cover => {
+      bookCovers.forEach((cover) => {
         expect(cover).toHaveAttribute('loading', 'lazy');
       });
     });
@@ -189,7 +201,7 @@ describe('Home Component', () => {
 
     it('matches grid layout snapshot', () => {
       const { container } = renderWithRouter();
-      
+
       // Optional snapshot test for grid layout
       expect(container.firstChild).toMatchSnapshot();
     });
@@ -201,12 +213,12 @@ describe('Home Component', () => {
 
       // Verify that each book link contains both image and title
       const links = screen.getAllByRole('link');
-      
-      links.forEach(link => {
+
+      links.forEach((link) => {
         // Each link should contain an image
         const image = link.querySelector('img');
         expect(image).toBeInTheDocument();
-        
+
         // Each link should contain a title div
         const titleDiv = link.querySelector('div');
         expect(titleDiv).toBeInTheDocument();

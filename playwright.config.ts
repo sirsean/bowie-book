@@ -16,33 +16,33 @@ export default defineConfig({
     actionTimeout: 10000, // Increased action timeout
   },
   projects: [
-    { 
-      name: 'chromium', 
-      use: { 
+    {
+      name: 'chromium',
+      use: {
         ...devices['Desktop Chrome'],
-        hasTouch: true // Enable touch events for touchscreen tests
-      } 
+        hasTouch: true, // Enable touch events for touchscreen tests
+      },
     },
-    { 
-      name: 'firefox',  
-      use: { 
+    {
+      name: 'firefox',
+      use: {
         ...devices['Desktop Firefox'],
-        hasTouch: true // Enable touch events for touchscreen tests
-      } 
+        hasTouch: true, // Enable touch events for touchscreen tests
+      },
     },
     {
       name: 'webkit',
-      use: { 
+      use: {
         ...devices['Desktop Safari'],
-        hasTouch: true // Enable touch events for touchscreen tests
+        hasTouch: true, // Enable touch events for touchscreen tests
       },
       // Skip webkit tests locally on macOS to avoid flakes:
       // Only run on CI environment by skipping when not in CI
       testIgnore: process.env.CI ? [] : ['**/*'],
     },
-    { 
-      name: 'mobile',   
-      use: { 
+    {
+      name: 'mobile',
+      use: {
         ...devices['iPhone 12'],
         hasTouch: true, // Enable touch events for mobile testing
       },
