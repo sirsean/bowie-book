@@ -101,7 +101,6 @@ test.describe('Book Navigation', () => {
     await expect(page).toHaveURL(/\/super-bowie(\/0)?$/);
   });
 
-
   test('should test Cover button navigation', async ({ page }) => {
     // Navigate to a middle page
     await page.goto('/super-bowie/5');
