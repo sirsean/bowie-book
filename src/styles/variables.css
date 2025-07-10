@@ -7,7 +7,7 @@
   --color-blue: #118ab2;
   --color-purple: #9b5de5;
   --color-pink: #ff70a6;
-  
+
   /* UI Colors */
   --color-primary: var(--color-purple);
   --color-primary-hover: var(--color-pink);
@@ -17,7 +17,7 @@
   --color-text: white;
   --color-text-overlay: white;
   --color-overlay-bg: rgba(83, 96, 252, 0.85);
-  
+
   /* Button Colors */
   --color-button-red: rgba(255, 94, 120, 0.9);
   --color-button-orange: rgba(255, 174, 34, 0.9);
@@ -25,10 +25,10 @@
   --color-button-green: rgba(6, 214, 160, 0.9);
   --color-button-blue: rgba(17, 138, 178, 0.9);
   --color-button-purple: rgba(155, 93, 229, 0.9);
-  
+
   /* Shadows and Effects */
   --rainbow-gradient: linear-gradient(
-    to right, 
+    to right,
     var(--color-red),
     var(--color-orange),
     var(--color-yellow),

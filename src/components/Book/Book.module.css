@@ -11,9 +11,15 @@
 }
 
 @keyframes gradientBG {
-  0% { background-position: 0% 50% }
-  50% { background-position: 100% 50% }
-  100% { background-position: 0% 50% }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Navigation bar */
@@ -98,9 +104,15 @@
 }
 
 @keyframes floatImage {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* Text overlay */
@@ -110,9 +122,10 @@
   left: 0;
   width: 100%;
   padding: 1.2rem;
-  background: linear-gradient(to top, 
-    rgba(155, 93, 229, 0.9), 
-    rgba(83, 96, 252, 0.8) 80%, 
+  background: linear-gradient(
+    to top,
+    rgba(155, 93, 229, 0.9),
+    rgba(83, 96, 252, 0.8) 80%,
     rgba(83, 96, 252, 0.1)
   );
   color: white;
@@ -184,10 +197,18 @@
 }
 
 /* Image with rainbow border */
-.pageImage:nth-of-type(4n+1) { border-color: var(--color-red); }
-.pageImage:nth-of-type(4n+2) { border-color: var(--color-green); }
-.pageImage:nth-of-type(4n+3) { border-color: var(--color-yellow); }
-.pageImage:nth-of-type(4n+4) { border-color: var(--color-purple); }
+.pageImage:nth-of-type(4n + 1) {
+  border-color: var(--color-red);
+}
+.pageImage:nth-of-type(4n + 2) {
+  border-color: var(--color-green);
+}
+.pageImage:nth-of-type(4n + 3) {
+  border-color: var(--color-yellow);
+}
+.pageImage:nth-of-type(4n + 4) {
+  border-color: var(--color-purple);
+}
 
 /* iPad Adjustments */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -196,12 +217,12 @@
     font-size: 1.2rem;
     padding: 0.6rem 1.2rem;
   }
-  
+
   .textOverlay {
     font-size: 1.5rem;
     padding: 1.2rem;
   }
-  
+
   .pageImage {
     border-width: 8px;
   }
@@ -214,22 +235,28 @@
     font-size: 1rem;
     padding: 0.5rem 0.8rem;
   }
-  
+
   .textOverlay {
     font-size: 1.1rem;
     padding: 0.8rem;
     max-height: 50%;
   }
-  
+
   .pageImage {
     max-width: 92%;
     max-height: 85%;
     animation: floatImage 4s ease-in-out infinite;
   }
-  
+
   @keyframes floatImage {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
 }

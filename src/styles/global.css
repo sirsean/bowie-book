@@ -9,7 +9,9 @@
   font-display: swap; /* Improves page load performance */
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -58,7 +60,9 @@ button {
   background-color: var(--color-button-bg);
   color: var(--color-text);
   cursor: pointer;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   min-height: 44px; /* Minimum touch target size */
   min-width: 44px;
   display: inline-flex;
@@ -87,7 +91,7 @@ button:focus-visible {
   h1 {
     font-size: 2rem;
   }
-  
+
   button {
     font-size: 1rem;
   }
