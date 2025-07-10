@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family:'Texturina';
+  font-weight:300 900;
+  font-style:normal;
+  src:url('/fonts/Texturina-VariableFont_opsz,wght.ttf') format('truetype');
+  font-display:swap;
+}
+
+/* Custom resets that override Tailwind's Preflight */
+
+/* Ensure images display as block with responsive sizing */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Ensure form elements inherit font styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Better text wrapping for headings and paragraphs */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Full-height layout for React screens */
+html, body, #root {
+  height: 100%;
+  min-height: 100vh;   /* guarantees at least one viewport */
+  width: 100%;
+}
+
+/* For users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@theme {
+  --color-red: #ff5e78;
+  --color-orange: #ffae22;
+  --color-yellow: #ffd166;
+  --color-green: #06d6a0;
+  --color-blue: #118ab2;
+  --color-purple: #9b5de5;
+  --color-pink: #ff70a6;
+  --color-primary: #9b5de5;
+  --color-primary-hover: #ff70a6;
+  --color-secondary: #06d6a0;
+  --color-background: #5360fc;
+  --color-text: white;
+  --color-text-overlay: white;
+  --color-overlay-bg: rgba(83, 96, 252, 0.85);
+  --color-button-red: rgba(255, 94, 120, 0.9);
+  --color-button-orange: rgba(255, 174, 34, 0.9);
+  --color-button-yellow: rgba(255, 209, 102, 0.9);
+  --color-button-green: rgba(6, 214, 160, 0.9);
+  --color-button-blue: rgba(17, 138, 178, 0.9);
+  --color-button-purple: rgba(155, 93, 229, 0.9);
+  
+  --rainbow-gradient: linear-gradient(to right, #ff5e78, #ffae22, #ffd166, #06d6a0, #118ab2, #9b5de5);
+  --rainbow-shadow: 0 8px 30px rgba(155, 93, 229, 0.4);
+  --background-gradient: linear-gradient(135deg, #5360fc, #7056f5);
+  --overlay-gradient: linear-gradient(135deg, rgba(83, 96, 252, 0.85), rgba(112, 86, 245, 0.85));
+  --overlay-radial: radial-gradient(circle, rgba(83, 96, 252, 0.85), rgba(112, 86, 245, 0.85));
+  
+  /* Tailwind v4 theme configuration */
+  --font-family-main: "Texturina", serif;
+  
+  --font-size-base: 16px;
+  --font-size-large: 1.5em;
+  --font-size-xl: 2em;
+  --font-size-xxl: 3.2em;
+  
+  --line-height-base: 1.5;
+  --line-height-heading: 1.1;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  --border-radius-sm: 8px;
+  --border-radius-DEFAULT: 12px;
+  --border-radius-lg: 20px;
+  
+  --border-width-5: 5px;
+  
+  --box-shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  --box-shadow-DEFAULT: 0 4px 15px rgba(0, 0, 0, 0.2);
+  --box-shadow-rainbow: 0 8px 30px rgba(155, 93, 229, 0.4);
+  
+  --z-index-base: 1;
+  --z-index-overlay: 5;
+  --z-index-navbar: 10;
+  
+  --transition-duration-DEFAULT: 0.25s;
+  
+  --breakpoint-sm: 400px;
+  --breakpoint-md: 600px;
+  --breakpoint-lg: 900px;
+  --breakpoint-xl: 1200px;
+  
+  --animate-gradientBG: gradientBG 15s ease infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-loader: spin 1s linear infinite;
+  
+  --background-image-rainbow-gradient: linear-gradient(to right, #ff5e78, #ffae22, #ffd166, #06d6a0, #118ab2, #9b5de5);
+  --background-image-rainbow-diagonal: linear-gradient(135deg, #ff5e78, #ffae22, #ffd166, #06d6a0, #118ab2, #9b5de5);
+  --background-image-rainbow-animated: linear-gradient(-45deg, #ff5e78, #ffae22, #ffd166, #06d6a0, #118ab2, #9b5de5);
+  --background-image-overlay-gradient: linear-gradient(135deg, rgba(83, 96, 252, 0.85), rgba(112, 86, 245, 0.85));
+  --background-image-overlay-radial: radial-gradient(circle, rgba(83, 96, 252, 0.85), rgba(112, 86, 245, 0.85));
+  --background-image-background-grad: linear-gradient(135deg, #5360fc, #7056f5);
+}
+
+/* Additional CSS Variables for backward compatibility */
+:root {
+  --color-red: #ff5e78;
+  --color-orange: #ffae22;
+  --color-yellow: #ffd166;
+  --color-green: #06d6a0;
+  --color-blue: #118ab2;
+  --color-purple: #9b5de5;
+  --color-pink: #ff70a6;
+  --color-primary: #9b5de5;
+  --color-primary-hover: #ff70a6;
+  --color-secondary: #06d6a0;
+  --color-background: #5360fc;
+  --color-text: white;
+  --color-text-overlay: white;
+  --color-overlay-bg: rgba(83, 96, 252, 0.85);
+  --color-button-red: rgba(255, 94, 120, 0.9);
+  --color-button-orange: rgba(255, 174, 34, 0.9);
+  --color-button-yellow: rgba(255, 209, 102, 0.9);
+  --color-button-green: rgba(6, 214, 160, 0.9);
+  --color-button-blue: rgba(17, 138, 178, 0.9);
+  --color-button-purple: rgba(155, 93, 229, 0.9);
+  
+  --rainbow-gradient: linear-gradient(to right, #ff5e78, #ffae22, #ffd166, #06d6a0, #118ab2, #9b5de5);
+  --rainbow-shadow: 0 8px 30px rgba(155, 93, 229, 0.4);
+  --background-gradient: linear-gradient(135deg, #5360fc, #7056f5);
+  --overlay-gradient: linear-gradient(135deg, rgba(83, 96, 252, 0.85), rgba(112, 86, 245, 0.85));
+  --overlay-radial: radial-gradient(circle, rgba(83, 96, 252, 0.85), rgba(112, 86, 245, 0.85));
+}
+
+/* Keyframes for animations */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Custom conic gradient for loading spinner */
+.bg-conic-gradient {
+  background: conic-gradient(
+    #ff5e78,
+    #ffae22,
+    #ffd166,
+    #06d6a0,
+    #118ab2,
+    #9b5de5,
+    #ff5e78
+  );
+}
+
+/* Text shadow utility */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation utilities */
+.animate-gradient-slow {
+  animation: gradientBG 15s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-loader {
+  animation: spin 1s linear infinite;
+}
+
+/* Background utilities */
+.bg-background-grad {
+  background: linear-gradient(135deg, #5360fc, #7056f5);
+}
+
+.bg-rainbow-animated {
+  background: var(--background-image-rainbow-animated);
+}

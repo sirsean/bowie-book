@@ -2,119 +2,142 @@
 
 exports[`Home Component > Grid Layout > matches grid layout snapshot 1`] = `
 <div
-  class="_container_d6eec2"
+  class="w-full min-h-full text-center bg-background-grad bg-[length:400%_400%] animate-gradient-slow p-4"
 >
   <h1
-    class="_title_d6eec2"
+    class="text-3xl md:text-4xl font-bold bg-[var(--rainbow-gradient)] bg-clip-text text-transparent drop-shadow-lg relative inline-block px-2 py-1"
+    style="text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);"
   >
     Bowie's Books!
+    <span
+      class="absolute bottom-0 left-1/4 w-1/2 h-1 bg-[var(--rainbow-gradient)] rounded-sm"
+      style="content: ""; display: block;"
+    />
   </h1>
   <div
-    class="_imageGrid_d6eec2"
+    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto max-w-[1200px] p-4"
   >
     <div
-      class="_gridItem_d6eec2"
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-red); box-shadow: var(--rainbow-shadow);"
     >
       <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         href="/bonne-adventure"
       >
         <img
           alt="Bonne Adventure Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           loading="lazy"
           src="/books/bonne-adventure/0-cover.webp"
         />
         <div
-          class="_gridItemTitle_d6eec2"
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
         >
           Bonne Adventure
         </div>
       </a>
     </div>
     <div
-      class="_gridItem_d6eec2"
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-orange); box-shadow: var(--rainbow-shadow);"
     >
       <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         href="/dragon-fighter"
       >
         <img
           alt="Dragon Fighter Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           loading="lazy"
           src="/books/dragon-fighter/0-cover.webp"
         />
         <div
-          class="_gridItemTitle_d6eec2"
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
         >
           Dragon Fighter
         </div>
       </a>
     </div>
     <div
-      class="_gridItem_d6eec2"
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-green); box-shadow: var(--rainbow-shadow);"
     >
       <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         href="/skyward-bound"
       >
         <img
           alt="Skyward Bound Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           loading="lazy"
           src="/books/skyward-bound/0.webp"
         />
         <div
-          class="_gridItemTitle_d6eec2"
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
         >
           Skyward Bound
         </div>
       </a>
     </div>
     <div
-      class="_gridItem_d6eec2"
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-blue); box-shadow: var(--rainbow-shadow);"
     >
       <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         href="/ziggy-the-bunny"
       >
         <img
           alt="Ziggy the Bunny Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           loading="lazy"
           src="/books/ziggy-the-bunny/0-cover.webp"
         />
         <div
-          class="_gridItemTitle_d6eec2"
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
         >
           Ziggy the Bunny
         </div>
       </a>
     </div>
     <div
-      class="_gridItem_d6eec2"
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-purple); box-shadow: var(--rainbow-shadow);"
     >
       <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         href="/super-bowie"
       >
         <img
           alt="Super Bowie Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           loading="lazy"
           src="/books/super-bowie/0-cover.jpg"
         />
         <div
-          class="_gridItemTitle_d6eec2"
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
         >
           Super Bowie
         </div>
       </a>
     </div>
     <div
-      class="_gridItem_d6eec2"
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-pink); box-shadow: var(--rainbow-shadow);"
     >
       <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         href="/superkitty-saves-bunnytown"
       >
         <img
           alt="Superkitty Saves Bunnytown Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
           loading="lazy"
           src="/books/superkitty-saves-bunnytown/superkitty-cover.png"
         />
         <div
-          class="_gridItemTitle_d6eec2"
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
         >
           Superkitty Saves Bunnytown
         </div>

@@ -186,16 +186,16 @@ describe('Home Component', () => {
     it('renders books in a grid container', () => {
       const { container } = renderWithRouter();
 
-      // Check that the grid structure is present
-      const gridContainer = container.querySelector('[class*="container"]');
+      // Check that the main container with Tailwind classes is present
+      const mainContainer = container.querySelector('[class*="w-full"]');
+      expect(mainContainer).toBeInTheDocument();
+
+      // Check that the grid container with grid classes is present
+      const gridContainer = container.querySelector('[class*="grid"]');
       expect(gridContainer).toBeInTheDocument();
 
-      // Check that the image grid is present
-      const imageGrid = container.querySelector('[class*="imageGrid"]');
-      expect(imageGrid).toBeInTheDocument();
-
-      // Check that grid items are present (only direct children of imageGrid)
-      const gridItems = imageGrid?.children;
+      // Check that grid items are present (6 books)
+      const gridItems = gridContainer?.children;
       expect(gridItems).toHaveLength(6);
     });
 

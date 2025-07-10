@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Home from './components/Home';
-import './styles/global.css';
 
 // Lazy load book components for better performance
 const BonneAdventure = lazy(() => import('./books/bonne-adventure/BonneAdventure'));

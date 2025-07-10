@@ -240,19 +240,16 @@ bowie-book/
 │   └── ...               # Favicons and other assets
 ├── src/
 │   ├── components/       # React components
-│   │   ├── Book/         # Book component with styles
-│   │   └── Home/         # Home component with styles
+│   │   ├── Book/         # Book component with Tailwind classes
+│   │   └── Home/         # Home component with Tailwind classes
 │   ├── books/            # Book content components
 │   │   ├── bonne-adventure/
 │   │   ├── dragon-fighter/
 │   │   ├── skyward-bound/
 │   │   └── ziggy-the-bunny/
-│   ├── styles/           # Global styles
-│   │   ├── global.css    # Global style rules
-│   │   ├── variables.css # CSS variables and theme
-│   │   └── reset.css     # CSS reset
 │   ├── types/            # TypeScript type definitions
 │   ├── App.tsx           # Main application component
+│   ├── index.css         # Tailwind CSS imports and custom styles
 │   └── main.tsx          # Entry point
 ├── index.html            # HTML template
 ├── vite.config.ts        # Vite configuration
@@ -280,11 +277,29 @@ The application uses a functional component architecture with TypeScript:
 - **iPad-Optimized**: Special styling for the primary device (iPad)
 - **Responsive Design**: Adapts to different screen sizes and orientations
 
-## 🛠️ Technologies
+## 🎨 Tailwind CSS Setup
+
+The project uses **Tailwind CSS v4** with a custom theme configuration that includes:
+
+- **Custom Colors**: Rainbow palette with semantic color names
+- **Design Tokens**: Consistent spacing, typography, and border radius values
+- **Custom Animations**: Gradient backgrounds, floating elements, and loading spinners
+- **CSS Variables**: Both Tailwind v4 `@theme` and traditional `:root` variables for compatibility
+- **Custom Utilities**: Text shadows, gradient backgrounds, and animation classes
+
+### Key Tailwind Features Used:
+- **Utility-First Approach**: All styling done with utility classes
+- **Custom Theme**: Defined in `src/index.css` using `@theme` directive
+- **Responsive Design**: Mobile-first breakpoints for all screen sizes
+- **Custom Animations**: Keyframe animations for interactive elements
+- **CSS Variables**: Seamless integration with existing custom properties
+
+## 🔨 Technologies
 
 - [React](https://reactjs.org/) - UI library
 - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
 - [React Router](https://reactrouter.com/) - Routing
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Vite](https://vitejs.dev/) - Build tool and development server
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting

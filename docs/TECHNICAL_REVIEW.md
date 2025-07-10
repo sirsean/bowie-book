@@ -9,7 +9,7 @@ The Bowie Book project is a modern, delightful children's book application built
 ### Key Characteristics
 - **Target Audience**: Children ages 3-7 and their parents
 - **Platform**: Web application optimized for tablets, mobile, and desktop
-- **Technology Stack**: React 18, TypeScript, Vite, React Router
+- **Technology Stack**: React 18, TypeScript, Tailwind CSS v4, Vite, React Router
 - **Design Theme**: Rainbow-themed with animations and child-friendly UI
 - **Content**: Growing collection of illustrated interactive storybooks
 
@@ -64,7 +64,7 @@ src/
 **Architecture Highlights:**
 - 🔄 **Reusable Book Component**: Single component handles all book rendering
 - 📦 **Self-Contained Books**: Each book is a complete module with its own content
-- 🎨 **CSS Modules**: Scoped styling prevents conflicts
+- 🎨 **Tailwind CSS**: Utility-first styling with custom theme
 - 📁 **Barrel Exports**: Clean import patterns with index files
 
 ### 3. **Responsive Design  Accessibility** 📱
@@ -119,25 +119,32 @@ Engaging user experience with multiple interaction methods:
 - 🌈 **Gradient Animations**: Dynamic background effects
 - 🖼️ **Image Optimization**: Proper loading states and error handling
 
-### 6. **CSS Architecture** 🎨
-Sophisticated styling system with modern CSS:
+### 6. **Tailwind CSS Architecture** 🎨
+Modern utility-first styling system with Tailwind CSS v4:
 
 ```css
-/* CSS Custom Properties */
-:root {
+/* src/index.css - Custom theme configuration */
+@import "tailwindcss";
+
+@theme {
   --color-red: #ff5e78;
   --color-orange: #ffae22;
-  --color-yellow: #ffd700;
-  /* ... rainbow color system */
+  --color-yellow: #ffd166;
+  --color-green: #06d6a0;
+  --color-blue: #118ab2;
+  --color-purple: #9b5de5;
+  /* Custom design tokens for rainbow theme */
 }
 ```
 
-**Styling Highlights:**
-- 🎨 **Rainbow Color System**: Consistent color palette
-- 🎬 **Animation System**: Smooth transitions and effects
-- 📐 **Layout Systems**: Proper use of Flexbox and CSS Grid
-- 🔧 **Modern CSS**: `backdrop-filter`, `object-fit`, and gradients
-- 📏 **Responsive Units**: Appropriate use of rem, em, and viewport units
+**Tailwind Implementation Highlights:**
+- 🎨 **Custom Theme**: Tailwind v4 `@theme` directive with rainbow color palette
+- 🔧 **Utility-First**: All styling via Tailwind utility classes
+- 📐 **Design Tokens**: Consistent spacing, typography, and border radius
+- 🎬 **Custom Animations**: Keyframe animations for gradients and floating elements
+- 📏 **Responsive Design**: Mobile-first breakpoints with custom screen sizes
+- 🎯 **CSS Variables**: Dual compatibility with traditional `:root` variables
+- ✨ **Custom Utilities**: Text shadows, gradient backgrounds, and animation classes
 
 ---
 
@@ -510,12 +517,10 @@ bowie-book/
 ├── src/
 │   ├── components/
 │   │   ├── Book/
-│   │   │   ├── Book.tsx           # Main book reader component
-│   │   │   ├── Book.module.css    # Book-specific styles
+│   │   │   ├── Book.tsx           # Main book reader component (uses Tailwind)
 │   │   │   └── index.ts           # Barrel export
 │   │   └── Home/
-│   │       ├── Home.tsx           # Home page component
-│   │       ├── Home.module.css    # Home page styles
+│   │       ├── Home.tsx           # Home page component (uses Tailwind)
 │   │       └── index.ts           # Barrel export
 │   ├── books/
 │   │   ├── Book.tsx               # ⚠️ DUPLICATE (needs removal)
@@ -532,12 +537,13 @@ bowie-book/
 │   │   └── ziggy-the-bunny/
 │   │       └── ZiggyTheBunny.tsx
 │   ├── styles/
-│   │   ├── global.css             # Global styles
-│   │   ├── variables.css          # CSS custom properties
-│   │   └── reset.css              # CSS reset
+│   │   ├── global.css             # Legacy global styles (deprecated)
+│   │   ├── variables.css          # Legacy CSS variables (deprecated)
+│   │   └── reset.css              # Legacy CSS reset (deprecated)
 │   ├── types/
 │   │   └── book.ts                # TypeScript interfaces
 │   ├── App.tsx                    # Main app component
+│   ├── index.css                  # Tailwind CSS imports and custom theme
 │   ├── main.tsx                   # Entry point
 │   └── vite-env.d.ts              # Vite type definitions
 ├── .eslintrc.json                 # ESLint configuration

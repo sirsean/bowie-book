@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import { BookData } from '../../types/book';
-import styles from './Book.module.css';
 
 interface PageProps {
   bookKey: string;
@@ -73,12 +72,12 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
   }
 
   return (
-    <div className={styles.pageContainer}>
+    <div className="relative flex flex-col w-full min-h-screen h-full overflow-hidden bg-background-grad bg-[length:400%_400%] animate-gradient-slow">
       {/* Navigation bar */}
-      <nav className={styles.nav}>
+      <nav className="flex justify-between items-center w-full p-3 bg-gradient-to-r from-red/85 to-purple/85 backdrop-blur z-10 shadow-lg">
         {/* Left button: Previous or Home */}
         <button
-          className={styles.navButton}
+          className="min-w-[90px] bg-green/90 rounded font-semibold shadow-md px-4 py-2 text-white transition hover:-translate-y-1 hover:brightness-110 disabled:opacity-50 md:min-w-[110px] md:text-xl md:px-5 md:py-3 text-lg sm:min-w-[80px] sm:text-base sm:px-3 sm:py-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
           onClick={page > 0 ? goToPrevious : goToHome}
           aria-label={page > 0 ? 'Previous page' : 'Back to home'}
         >
@@ -87,14 +86,18 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
 
         {/* Center button: Cover (only show if not on cover) */}
         {page > 0 && (
-          <button className={styles.navButton} onClick={goToCover} aria-label="Go to cover">
+          <button
+            className="min-w-[90px] bg-yellow/90 rounded font-semibold shadow-md px-4 py-2 text-white transition hover:-translate-y-1 hover:brightness-110 disabled:opacity-50 md:min-w-[110px] md:text-xl md:px-5 md:py-3 text-lg sm:min-w-[80px] sm:text-base sm:px-3 sm:py-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+            onClick={goToCover}
+            aria-label="Go to cover"
+          >
             Cover
           </button>
         )}
 
         {/* Right button: Next or Finish */}
         <button
-          className={styles.navButton}
+          className="min-w-[90px] bg-red/90 rounded font-semibold shadow-md px-4 py-2 text-white transition hover:-translate-y-1 hover:brightness-110 disabled:opacity-50 md:min-w-[110px] md:text-xl md:px-5 md:py-3 text-lg sm:min-w-[80px] sm:text-base sm:px-3 sm:py-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
           onClick={page < images.length - 1 ? goToNext : goToHome}
           aria-label={page < images.length - 1 ? 'Next page' : 'Back to home'}
           disabled={loading}
@@ -104,25 +107,32 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
       </nav>
 
       {/* Image container */}
-      <div className={styles.imageWrapper}>
-        {loading && <div className={styles.loading} aria-label="Loading" />}
+      <div className="flex-1 flex items-center justify-center relative p-4">
+        {loading && (
+          <div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-conic-gradient animate-loader"
+            aria-label="Loading"
+          >
+            <div className="absolute top-1 left-1 right-1 bottom-1 bg-background rounded-full"></div>
+          </div>
+        )}
         <img
           src={imgSrc}
           alt={`Page ${page}`}
-          className={styles.pageImage}
+          className="max-w-[95%] max-h-[95%] rounded-lg border-4 md:border-5 border-white shadow-2xl animate-float object-contain sm:max-w-[92%] sm:max-h-[85%]"
           onLoad={() => setLoading(false)}
         />
       </div>
 
       {/* Touch navigation overlay for left/right swipes */}
-      <div className={styles.touchOverlay}>
+      <div className="absolute top-0 left-0 w-full h-full flex z-[4]">
         <button
-          className={styles.touchPrevious}
+          className="flex-1 h-full bg-transparent focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-inset"
           onClick={goToPrevious}
           aria-label="Previous page (touch area)"
         />
         <button
-          className={styles.touchNext}
+          className="flex-1 h-full bg-transparent focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-inset"
           onClick={goToNext}
           aria-label="Next page (touch area)"
         />
@@ -130,7 +140,10 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
 
       {/* Text overlay at bottom */}
       {text && (
-        <div className={styles.textOverlay} data-testid="text-overlay">
+        <div
+          className="absolute bottom-0 left-0 w-full max-h-[40%] overflow-y-auto p-5 text-white text-lg leading-relaxed bg-gradient-to-t from-purple/90 via-blue/80 via-80% to-blue/10 backdrop-blur border-t border-white/30 text-shadow shadow-text z-overlay md:text-xl md:p-5 sm:text-base sm:p-3 sm:max-h-[50%]"
+          data-testid="text-overlay"
+        >
           {text}
         </div>
       )}
