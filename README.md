@@ -261,21 +261,25 @@ bowie-book/
 
 ## 🧠 Architecture
 
-The application uses a functional component architecture with TypeScript:
+The application uses a functional component architecture with TypeScript and Tailwind CSS:
 
-- `Book.tsx` - Reusable component for displaying any book with navigation
-- Individual book components provide content to the Book component:
-  - `bookKey` - Unique identifier for the book
-  - `images` - Array of image paths
-  - `texts` - Array of text content for each page
+- `Book.tsx` - Reusable component utilizing Tailwind CSS for styling.
+- Book components are content-driven and provide:
+  - `bookKey` - Unique identifier for the book.
+  - `images` - Array of paths to images associated with the books.
+  - `texts` - Text content paired with images, all styled via Tailwind utility classes.
+
+### Migration Rationale
+
+With Tailwind CSS, the application has minimized the need for maintaining multiple CSS modules. The utility-first approach allows for rapid UI development with less focus on custom classes. Custom theme configurations ensure consistency in design while maintaining flexibility.
 
 ## 🎨 Design Features
 
 - **Rainbow Theme**: Vibrant colors and gradients throughout the application
-- **Animation Effects**: Floating images, gradient shifts, and interactive elements
+- **Animation Effects**: Achieved through Tailwind CSS utilities
 - **Child-Friendly UI**: Large touch targets and intuitive navigation
-- **iPad-Optimized**: Special styling for the primary device (iPad)
-- **Responsive Design**: Adapts to different screen sizes and orientations
+- **iPad-Optimized**: Special styling for the primary device (iPad), using Tailwind's responsive utilities
+- **Responsive Design**: Adapts to different screen sizes and orientations with Tailwind's grid system
 
 ## 🎨 Tailwind CSS Setup
 
@@ -283,15 +287,15 @@ The project uses **Tailwind CSS v4** with a custom theme configuration that incl
 
 - **Custom Colors**: Rainbow palette with semantic color names
 - **Design Tokens**: Consistent spacing, typography, and border radius values
-- **Custom Animations**: Gradient backgrounds, floating elements, and loading spinners
+- **Custom Animations**: Utilized through Tailwind's animation utilities
 - **CSS Variables**: Both Tailwind v4 `@theme` and traditional `:root` variables for compatibility
-- **Custom Utilities**: Text shadows, gradient backgrounds, and animation classes
+- **Custom Utilities**: Dynamic utility classes
 
 ### Key Tailwind Features Used:
 - **Utility-First Approach**: All styling done with utility classes
 - **Custom Theme**: Defined in `src/index.css` using `@theme` directive
 - **Responsive Design**: Mobile-first breakpoints for all screen sizes
-- **Custom Animations**: Keyframe animations for interactive elements
+- **Custom Animations**: Tailwind classes for interactive elements
 - **CSS Variables**: Seamless integration with existing custom properties
 
 ## 🔨 Technologies

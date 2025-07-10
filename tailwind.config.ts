@@ -4,7 +4,7 @@ import type { Config } from 'tailwindcss';
 const config: Config = {
   // Content scanning for class detection
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  
+
   // Plugins can still be added here if needed
   plugins: [],
 };

@@ -46,7 +46,7 @@ const Home = (): JSX.Element => {
   return (
     <div className="w-full min-h-screen text-center bg-rainbow-animated bg-[length:400%_400%] animate-gradient-slow p-4">
       <h1
-className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg relative inline-block px-2 py-1"
+        className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg relative inline-block px-2 py-1"
         style={{
           textShadow: '3px 3px 6px rgba(0, 0, 0, 0.3)',
         }}

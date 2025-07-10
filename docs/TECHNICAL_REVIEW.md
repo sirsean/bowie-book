@@ -120,31 +120,31 @@ Engaging user experience with multiple interaction methods:
 - 🖼️ **Image Optimization**: Proper loading states and error handling
 
 ### 6. **Tailwind CSS Architecture** 🎨
-Modern utility-first styling system with Tailwind CSS v4:
+Modern utility-first styling system using Tailwind CSS v4. The architecture is based on a consistent set of design tokens, defined via CSS variables, to maintain uniformity across the application.
 
 ```css
-/* src/index.css - Custom theme configuration */
+/* src/index.css - Tailwind CSS and Custom Theme Configuration */
 @import "tailwindcss";
-
 @theme {
-  --color-red: #ff5e78;
-  --color-orange: #ffae22;
-  --color-yellow: #ffd166;
-  --color-green: #06d6a0;
-  --color-blue: #118ab2;
-  --color-purple: #9b5de5;
-  /* Custom design tokens for rainbow theme */
+  /* Custom theme configuration leveraging Tailwind v4 */
+  --color-primary: #9b5de5;
+  --color-background: #5360fc;
+  --font-family-main: "Texturina", serif;
+  /* Design tokens for spacing, typography, etc. */
 }
 ```
 
-**Tailwind Implementation Highlights:**
-- 🎨 **Custom Theme**: Tailwind v4 `@theme` directive with rainbow color palette
-- 🔧 **Utility-First**: All styling via Tailwind utility classes
-- 📐 **Design Tokens**: Consistent spacing, typography, and border radius
-- 🎬 **Custom Animations**: Keyframe animations for gradients and floating elements
-- 📏 **Responsive Design**: Mobile-first breakpoints with custom screen sizes
-- 🎯 **CSS Variables**: Dual compatibility with traditional `:root` variables
-- ✨ **Custom Utilities**: Text shadows, gradient backgrounds, and animation classes
+**Key Features:**
+- 🎨 **Custom Theme & Colors**: Tailored rainbow color palette with specific design tokens.
+- 🔧 **Utility-First Approach**: Leveraging utility classes for rapid styling.
+- 📐 **Responsive Design**: Mobile-first approach using custom screen sizes.
+- 🎬 **Animation Utilities**: Smooth animations with custom utilities.
+
+### Migration Rationale
+
+The project has fully transitioned to using Tailwind CSS v4, moving away from custom CSS modules. Tailwind's utility-first methodology streamlines class names and focuses on reusability and maintainability. The migration reduces the overlap of styles while leveraging Tailwind's advanced theming capabilities.
+
+- **Benefits**: Reduces redundancy in styles and aligns with modern CSS practices.
 
 ---
 
@@ -517,10 +517,10 @@ bowie-book/
 ├── src/
 │   ├── components/
 │   │   ├── Book/
-│   │   │   ├── Book.tsx           # Main book reader component (uses Tailwind)
+│   │   │   ├── Book.tsx           # Main book reader component
 │   │   │   └── index.ts           # Barrel export
 │   │   └── Home/
-│   │       ├── Home.tsx           # Home page component (uses Tailwind)
+│   │       ├── Home.tsx           # Home page component
 │   │       └── index.ts           # Barrel export
 │   ├── books/
 │   │   ├── Book.tsx               # ⚠️ DUPLICATE (needs removal)
@@ -536,14 +536,10 @@ bowie-book/
 │   │   │   └── SuperkittySavesBunnytown.tsx
 │   │   └── ziggy-the-bunny/
 │   │       └── ZiggyTheBunny.tsx
-│   ├── styles/
-│   │   ├── global.css             # Legacy global styles (deprecated)
-│   │   ├── variables.css          # Legacy CSS variables (deprecated)
-│   │   └── reset.css              # Legacy CSS reset (deprecated)
 │   ├── types/
 │   │   └── book.ts                # TypeScript interfaces
 │   ├── App.tsx                    # Main app component
-│   ├── index.css                  # Tailwind CSS imports and custom theme
+│   ├── index.css                  # Tailwind CSS configuration and theme
 │   ├── main.tsx                   # Entry point
 │   └── vite-env.d.ts              # Vite type definitions
 ├── .eslintrc.json                 # ESLint configuration
