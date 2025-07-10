@@ -54,6 +54,169 @@ This vibrant application provides a delightful reading experience for children's
 - `npm run e2e:ci` - Runs end-to-end tests with CI reporter
 - `npm run ci:test` - Runs complete test suite with coverage and CI reporters
 
+## 🔄 CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment. The CI pipeline automatically runs on every push to the main branch and on pull requests.
+
+### CI Jobs Overview
+
+The CI pipeline consists of several jobs that run in parallel to ensure code quality:
+
+#### 1. **Prettier Check** (`prettier`)
+- **Purpose**: Ensures code formatting consistency across the project
+- **Runs**: `npm run format:check`
+- **Local equivalent**: `npm run format:check` (check) or `npm run format` (auto-fix)
+- **What it does**: Validates that all source files follow the configured Prettier formatting rules
+
+#### 2. **Linting** (`lint`)
+- **Purpose**: Checks code quality and catches potential issues
+- **Runs**: `npm run lint`
+- **Local equivalent**: `npm run lint`
+- **What it does**: Runs ESLint to identify code quality issues, unused variables, and potential bugs
+
+#### 3. **Type Checking** (`typecheck`)
+- **Purpose**: Validates TypeScript types without emitting files
+- **Runs**: `npm run typecheck`
+- **Local equivalent**: `npm run typecheck`
+- **What it does**: Ensures all TypeScript code is properly typed and catches type errors
+
+#### 4. **Unit Tests** (`unit-tests`)
+- **Purpose**: Runs unit tests with coverage reporting
+- **Runs**: `npm run test:coverage`
+- **Local equivalent**: `npm run test:coverage` (with coverage) or `npm run test:unit` (without coverage)
+- **Dependencies**: Waits for `lint`, `prettier`, and `typecheck` jobs to complete
+- **What it does**: Executes all unit tests using Vitest and generates coverage reports
+
+#### 5. **End-to-End Tests** (`e2e`)
+- **Purpose**: Runs browser-based integration tests
+- **Runs**: `npm run e2e:ci`
+- **Local equivalent**: `npm run e2e` (with UI) or `npm run e2e:ci` (headless)
+- **Dependencies**: Waits for `lint`, `prettier`, and `typecheck` jobs to complete
+- **What it does**: Builds the project and runs Playwright tests to verify the application works end-to-end
+
+#### 6. **Comprehensive Test & Build** (`test-and-build`)
+- **Purpose**: Complete validation including type checking, formatting, unit tests, build, and E2E tests
+- **What it does**: Runs all checks in sequence and uploads test results and build artifacts
+- **Includes**: Type checking, formatting check, unit tests with coverage, build process, and E2E tests
+
+### Running CI Commands Locally
+
+To replicate the CI environment locally, run these commands in order:
+
+```bash
+# Install dependencies (equivalent to npm ci in CI)
+npm install
+
+# 1. Check code formatting
+npm run format:check
+# Or auto-fix formatting issues:
+npm run format
+
+# 2. Run linting
+npm run lint
+
+# 3. Run type checking
+npm run typecheck
+
+# 4. Run unit tests with coverage
+npm run test:coverage
+
+# 5. Build the project
+npm run build
+
+# 6. Install Playwright browsers (first time only)
+npx playwright install --with-deps
+
+# 7. Run E2E tests
+npm run e2e:ci
+
+# Or run everything at once:
+npm run ci:test
+```
+
+### Viewing Coverage Reports
+
+After running tests with coverage, you can view the reports in several ways:
+
+#### Terminal Output
+The coverage summary is displayed directly in the terminal after running:
+```bash
+npm run test:coverage
+```
+
+#### HTML Coverage Report
+A detailed HTML report is generated in the `coverage/` directory:
+```bash
+# Run tests with coverage
+npm run test:coverage
+
+# Open the HTML report in your browser
+# On macOS:
+open coverage/index.html
+
+# On Linux:
+xdg-open coverage/index.html
+
+# On Windows:
+start coverage/index.html
+```
+
+#### Coverage Artifacts in CI
+- **Unit test coverage**: Uploaded as `vitest-coverage` artifact
+- **E2E test results**: Uploaded as `playwright-report` artifact (on failure)
+- **Build artifacts**: Uploaded as `build-artifacts` artifact
+
+These artifacts are retained for 30 days and can be downloaded from the GitHub Actions run page.
+
+### Troubleshooting CI Issues
+
+**Formatting Issues:**
+```bash
+# Check what files have formatting issues
+npm run format:check
+
+# Fix formatting issues automatically
+npm run format
+```
+
+**Linting Issues:**
+```bash
+# See detailed linting errors
+npm run lint
+
+# Some issues can be auto-fixed
+npm run lint -- --fix
+```
+
+**Type Errors:**
+```bash
+# See detailed type errors
+npm run typecheck
+
+# Or use your IDE's TypeScript integration for real-time feedback
+```
+
+**Test Failures:**
+```bash
+# Run unit tests in watch mode for development
+npm run test:unit:watch
+
+# Run specific test files
+npm run test:unit -- src/components/Book/Book.test.tsx
+
+# Run E2E tests with UI for debugging
+npm run e2e
+```
+
+**Build Issues:**
+```bash
+# Run build locally to see detailed errors
+npm run build
+
+# Check build output
+npm run preview
+```
+
 ## 📱 Deployment
 
 This project is configured for deployment to Cloudflare Pages.
