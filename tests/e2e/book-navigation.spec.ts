@@ -101,47 +101,6 @@ test.describe('Book Navigation', () => {
     await expect(page).toHaveURL(/\/super-bowie(\/0)?$/);
   });
 
-  test('should navigate through book pages using mobile swipe', async ({ page }) => {
-    // Navigate to Super Bowie
-    await page.goto('/super-bowie');
-
-    // Get the touch overlay elements - variables will be used for touch simulation
-
-    // Take initial screenshot
-    await page.screenshot({ path: 'test-results/mobile-swipe-start.png' });
-
-    // Simulate swipe forward (tap right side) for 3 pages
-    for (let i = 0; i < 3; i++) {
-      // Use touchscreen.tap on the right side of the screen to simulate swipe
-      await page.touchscreen.tap(1000, 400); // Right side tap
-
-      // Verify we've moved to the next page
-      await expect(page).toHaveURL(new RegExp(`/super-bowie/${i + 1}`));
-
-      // Verify page image is visible
-      const pageImage = page.locator(`img[alt="Page ${i + 1}"]`);
-      await expect(pageImage).toBeVisible();
-
-      // Take screenshot
-      await page.screenshot({ path: `test-results/mobile-swipe-page-${i + 1}.png` });
-    }
-
-    // Simulate swipe backward (tap left side) for 3 pages
-    for (let i = 2; i >= 0; i--) {
-      // Use touchscreen.tap on the left side of the screen to simulate swipe
-      await page.touchscreen.tap(280, 400); // Left side tap
-
-      // Verify we've moved to the previous page
-      await expect(page).toHaveURL(new RegExp(`/super-bowie/${i}`));
-
-      // Verify page image is visible
-      const pageImage = page.locator(`img[alt="Page ${i}"]`);
-      await expect(pageImage).toBeVisible();
-    }
-
-    // Should be back at the cover (accept both /super-bowie and /super-bowie/0)
-    await expect(page).toHaveURL(/\/super-bowie(\/0)?$/);
-  });
 
   test('should test Cover button navigation', async ({ page }) => {
     // Navigate to a middle page

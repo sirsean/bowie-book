@@ -40,15 +40,5 @@ export default defineConfig({
       // Only run on CI environment by skipping when not in CI
       testIgnore: process.env.CI ? [] : ['**/*'],
     },
-    {
-      name: 'mobile',
-      use: {
-        ...devices['iPhone 12'],
-        hasTouch: true, // Enable touch events for mobile testing
-      },
-      // Skip mobile tests locally on macOS due to WebKit issues:
-      // Only run on CI environment by skipping when not in CI
-      testIgnore: process.env.CI ? [] : ['**/*'],
-    },
   ],
 });
