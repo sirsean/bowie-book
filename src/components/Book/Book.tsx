@@ -25,15 +25,24 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
   }, [page, bookKey, navigate]);
 
   const goToNext = useCallback(() => {
-    if (page < pages.length - 1) {
+    if (pages && page < pages.length - 1) {
       navigate(`/${bookKey}/${page + 1}`);
     }
-  }, [page, bookKey, navigate, pages.length]);
+  }, [page, bookKey, navigate, pages]);
 
   const goToHome = useCallback(() => navigate('/'), [navigate]);
   const goToCover = useCallback(() => navigate(`/${bookKey}`), [navigate, bookKey]);
 
   // Make sure we have a valid page
+  if (!pages || pages.length === 0) {
+    return (
+      <div className="flex flex-col justify-center items-center min-h-screen text-center bg-background-grad p-4 animate-fade">
+        <h2 className="text-2xl font-bold text-white mb-6">No Pages Available</h2>
+        <p className="text-white/80">There seems to be an issue with loading the book pages. Please try again later or contact support.</p>
+      </div>
+    );
+  }
+
   const currentPage = pages[page];
   const imgSrc = currentPage?.image;
   const text = currentPage?.text;
@@ -98,11 +107,11 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
         {/* Right button: Next or Finish */}
         <button
           className="min-w-[90px] bg-red/90 rounded font-semibold shadow-md px-4 py-2 text-white transition hover:-translate-y-1 hover:brightness-110 disabled:opacity-50 md:min-w-[110px] md:text-xl md:px-5 md:py-3 text-lg sm:min-w-[80px] sm:text-base sm:px-3 sm:py-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
-          onClick={page < pages.length - 1 ? goToNext : goToHome}
-          aria-label={page < pages.length - 1 ? 'Next page' : 'Back to home'}
+          onClick={pages && page < pages.length - 1 ? goToNext : goToHome}
+          aria-label={pages && page < pages.length - 1 ? 'Next page' : 'Back to home'}
           disabled={loading}
         >
-          {page < pages.length - 1 ? 'Next' : 'Finish'}
+          {pages && page < pages.length - 1 ? 'Next' : 'Finish'}
         </button>
       </nav>
 
@@ -159,7 +168,7 @@ const PageRoute = ({ bookKey, pages }: Omit<PageProps, 'page'>): JSX.Element => 
   const pageNum = parseInt(page || '0', 10);
 
   // Validate page number to prevent issues
-  const validPageNum = isNaN(pageNum) ? 0 : Math.max(0, Math.min(pageNum, pages.length - 1));
+  const validPageNum = isNaN(pageNum) ? 0 : Math.max(0, Math.min(pageNum, (pages?.length || 1) - 1));
 
   return <Page bookKey={bookKey} pages={pages} page={validPageNum} />;
 };
