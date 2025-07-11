@@ -266,8 +266,7 @@ The application uses a functional component architecture with TypeScript and Tai
 - `Book.tsx` - Reusable component utilizing Tailwind CSS for styling.
 - Book components are content-driven and provide:
   - `bookKey` - Unique identifier for the book.
-  - `images` - Array of paths to images associated with the books.
-  - `texts` - Text content paired with images, all styled via Tailwind utility classes.
+  - `pages` - Array of page objects with image and text content, all styled via Tailwind utility classes.
 
 ### Migration Rationale
 

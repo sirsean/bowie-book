@@ -304,21 +304,23 @@ import Book from '../../components/Book/Book';
 export default function MyNewBook(): JSX.Element {
   const bookKey = 'my-new-book'; // Must match directory name
 
-  const images = [
-    '/books/my-new-book/0-cover.webp',
-    '/books/my-new-book/1-opening.webp',
-    '/books/my-new-book/2-adventure.webp',
-    // ... add all images
+  const pages = [
+    {
+      image: '/books/my-new-book/0-cover.webp',
+      text: 'My New Book',
+    },
+    {
+      image: '/books/my-new-book/1-opening.webp',
+      text: 'Once upon a time...',
+    },
+    {
+      image: '/books/my-new-book/2-adventure.webp',
+      text: 'The adventure begins...',
+    },
+    // ... add all subsequent pages
   ];
 
-  const texts = [
-    'My New Book',              // Cover page
-    'Once upon a time...',      // Page 1
-    'The adventure begins...',  // Page 2
-    // ... add all text (same length as images)
-  ];
-
-  return Book bookKey={bookKey} images={images} texts={texts} /;
+  return Book bookKey={bookKey} pages={pages} /;
 }
 ```
 
@@ -360,7 +362,7 @@ const books: BookPreview[] = [
 - **Reading Level**: Age-appropriate vocabulary (ages 3-7)
 
 ### Common Pitfalls to Avoid 🚫
-1. **Mismatched Array Lengths**: Ensure `images` and `texts` arrays are same length
+1. **Complete Page Objects**: Ensure each `page` includes both `image` and `text`
 2. **Incorrect Paths**: All image paths must start with `/books/`
 3. **Route Conflicts**: Ensure `book-id` is unique across all books
 4. **Missing Imports**: Don't forget to import component in `App.tsx`

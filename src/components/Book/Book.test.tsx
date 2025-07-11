@@ -48,8 +48,12 @@ afterEach(() => {
 
 const mockBookData: BookData = {
   bookKey: 'test-book',
-  images: ['/images/cover.jpg', '/images/page1.jpg', '/images/page2.jpg', '/images/page3.jpg'],
-  texts: ['Cover page text', 'Page 1 text content', 'Page 2 text content', 'Final page text'],
+  pages: [
+    { image: '/images/cover.jpg', text: 'Cover page text' },
+    { image: '/images/page1.jpg', text: 'Page 1 text content' },
+    { image: '/images/page2.jpg', text: 'Page 2 text content' },
+    { image: '/images/page3.jpg', text: 'Final page text' },
+  ],
 };
 
 const renderBookWithRouter = (initialPath: string = '/') => {
@@ -430,7 +434,12 @@ describe('Book Component', () => {
     it('does not show text overlay when text is empty', () => {
       const bookWithEmptyText = {
         ...mockBookData,
-        texts: ['', 'Page 1 text', '', 'Page 3 text'],
+        pages: [
+          { image: '/images/cover.jpg', text: '' },
+          { image: '/images/page1.jpg', text: 'Page 1 text' },
+          { image: '/images/page2.jpg', text: '' },
+          { image: '/images/page3.jpg', text: 'Page 3 text' },
+        ],
       };
 
       render(
@@ -496,7 +505,7 @@ describe('Book Component', () => {
     it('navigates to cover when page has no image', async () => {
       const bookWithMissingImage = {
         ...mockBookData,
-        images: ['/images/cover.jpg'], // Only cover image
+        pages: [{ image: '/images/cover.jpg', text: 'Cover page text' }], // Only cover page
       };
 
       render(

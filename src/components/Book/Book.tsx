@@ -1,18 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
-import { BookData } from '../../types/book';
+import { BookData, type Page } from '../../types/book';
 
 interface PageProps {
   bookKey: string;
-  images: string[];
-  texts: string[];
+  pages: Page[];
   page: number;
 }
 
 /**
  * Page component displays a single page of a book with navigation controls
  */
-const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null => {
+const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -26,17 +25,18 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
   }, [page, bookKey, navigate]);
 
   const goToNext = useCallback(() => {
-    if (page < images.length - 1) {
+    if (page < pages.length - 1) {
       navigate(`/${bookKey}/${page + 1}`);
     }
-  }, [page, bookKey, navigate, images.length]);
+  }, [page, bookKey, navigate, pages.length]);
 
   const goToHome = useCallback(() => navigate('/'), [navigate]);
   const goToCover = useCallback(() => navigate(`/${bookKey}`), [navigate, bookKey]);
 
   // Make sure we have a valid page
-  const imgSrc = images[page];
-  const text = texts[page];
+  const currentPage = pages[page];
+  const imgSrc = currentPage?.image;
+  const text = currentPage?.text;
 
   // Handle image loading and keyboard navigation
   useEffect(() => {
@@ -98,11 +98,11 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
         {/* Right button: Next or Finish */}
         <button
           className="min-w-[90px] bg-red/90 rounded font-semibold shadow-md px-4 py-2 text-white transition hover:-translate-y-1 hover:brightness-110 disabled:opacity-50 md:min-w-[110px] md:text-xl md:px-5 md:py-3 text-lg sm:min-w-[80px] sm:text-base sm:px-3 sm:py-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
-          onClick={page < images.length - 1 ? goToNext : goToHome}
-          aria-label={page < images.length - 1 ? 'Next page' : 'Back to home'}
+          onClick={page < pages.length - 1 ? goToNext : goToHome}
+          aria-label={page < pages.length - 1 ? 'Next page' : 'Back to home'}
           disabled={loading}
         >
-          {page < images.length - 1 ? 'Next' : 'Finish'}
+          {page < pages.length - 1 ? 'Next' : 'Finish'}
         </button>
       </nav>
 
@@ -154,29 +154,26 @@ const Page = ({ bookKey, page, images, texts }: PageProps): JSX.Element | null =
 /**
  * PageRoute component that extracts page number from URL parameters
  */
-const PageRoute = ({ bookKey, images, texts }: Omit<PageProps, 'page'>): JSX.Element => {
+const PageRoute = ({ bookKey, pages }: Omit<PageProps, 'page'>): JSX.Element => {
   const { page } = useParams<{ page: string }>();
   const pageNum = parseInt(page || '0', 10);
 
   // Validate page number to prevent issues
-  const validPageNum = isNaN(pageNum) ? 0 : Math.max(0, Math.min(pageNum, images.length - 1));
+  const validPageNum = isNaN(pageNum) ? 0 : Math.max(0, Math.min(pageNum, pages.length - 1));
 
-  return <Page bookKey={bookKey} images={images} texts={texts} page={validPageNum} />;
+  return <Page bookKey={bookKey} pages={pages} page={validPageNum} />;
 };
 
 /**
  * Book component displaying an interactive book with navigation
  */
 const Book = (props: BookData): JSX.Element => {
-  const { bookKey, images, texts } = props;
+  const { bookKey, pages } = props;
 
   return (
     <Routes>
-      <Route path="/" element={<Page bookKey={bookKey} images={images} texts={texts} page={0} />} />
-      <Route
-        path="/:page"
-        element={<PageRoute bookKey={bookKey} images={images} texts={texts} />}
-      />
+      <Route path="/" element={<Page bookKey={bookKey} pages={pages} page={0} />} />
+      <Route path="/:page" element={<PageRoute bookKey={bookKey} pages={pages} />} />
     </Routes>
   );
 };

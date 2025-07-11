@@ -74,23 +74,30 @@ import Book from '../../components/Book/Book';
 export default function BookName(): JSX.Element {
   const bookKey = 'book-id'; // Must match the directory name
 
-  const images = [
-    '/books/book-id/0-cover.webp',
-    '/books/book-id/1-opening.webp',
-    '/books/book-id/2-adventure.webp',
-    '/books/book-id/3-climax.webp',
-    '/books/book-id/4-ending.webp',
+  const pages = [
+    {
+      image: '/books/book-id/0-cover.webp',
+      text: 'Book Title',
+    },
+    {
+      image: '/books/book-id/1-opening.webp',
+      text: 'Once upon a time...',
+    },
+    {
+      image: '/books/book-id/2-adventure.webp',
+      text: 'The adventure begins...',
+    },
+    {
+      image: '/books/book-id/3-climax.webp',
+      text: 'The exciting climax...',
+    },
+    {
+      image: '/books/book-id/4-ending.webp',
+      text: 'The happy ending...',
+    },
   ];
 
-  const texts = [
-    'Book Title', // Cover page text
-    'Once upon a time...', // Page 1 text
-    'The adventure begins...', // Page 2 text
-    'The exciting climax...', // Page 3 text
-    'The happy ending...', // Page 4 text
-  ];
-
-  return <Book bookKey={bookKey} images={images} texts={texts} />;
+  return <Book bookKey={bookKey} pages={pages} />;
 }
 ```
 
@@ -106,19 +113,19 @@ import Book from '../../components/Book/Book';
 export default function [COMPONENT_NAME](): JSX.Element {
   const bookKey = '[BOOK_ID]'; // URL-friendly identifier
 
-  const images = [
-    // Array of image paths starting with cover (index 0)
-    '/books/[BOOK_ID]/0-cover.[ext]',
+  const pages = [
+    {
+      image: '/books/[BOOK_ID]/0-cover.[ext]',
+      text: '[BOOK_TITLE]',
+    },
     // Add subsequent pages...
+    // {
+    //   image: '/books/[BOOK_ID]/1.[ext]',
+    //   text: 'Page 1 text content...',
+    // },
   ];
 
-  const texts = [
-    // Array of text for each page (same length as images)
-    '[BOOK_TITLE]', // Cover page
-    // Add page text...
-  ];
-
-  return <Book bookKey={bookKey} images={images} texts={texts} />;
+  return <Book bookKey={bookKey} pages={pages} />;
 }
 ```
 
@@ -222,14 +229,35 @@ alt="The hero begins their journey" // More descriptive
 
 ### Example Text Pagination
 ```typescript
-const texts = [
-  'My Amazing Adventure',                           // Cover
-  'Once upon a time, there was a brave little girl named Luna.',  // Setup
-  'Luna loved to explore the enchanted forest behind her house.',  // Character intro
-  'One day, she discovered a hidden path she had never seen before.', // Inciting incident
-  'The path led to a magical garden full of talking flowers!',     // Discovery
-  'Luna made friends with the flowers and learned their secret.',  // Development
-  'She promised to visit them every day and keep their secret safe.', // Resolution
+const pages = [
+  {
+    image: '/books/amazing-adventure/0-cover.webp',
+    text: 'My Amazing Adventure',
+  },
+  {
+    image: '/books/amazing-adventure/1-setup.webp',
+    text: 'Once upon a time, there was a brave little girl named Luna.',
+  },
+  {
+    image: '/books/amazing-adventure/2-character.webp',
+    text: 'Luna loved to explore the enchanted forest behind her house.',
+  },
+  {
+    image: '/books/amazing-adventure/3-incident.webp',
+    text: 'One day, she discovered a hidden path she had never seen before.',
+  },
+  {
+    image: '/books/amazing-adventure/4-discovery.webp',
+    text: 'The path led to a magical garden full of talking flowers!',
+  },
+  {
+    image: '/books/amazing-adventure/5-development.webp',
+    text: 'Luna made friends with the flowers and learned their secret.',
+  },
+  {
+    image: '/books/amazing-adventure/6-resolution.webp',
+    text: 'She promised to visit them every day and keep their secret safe.',
+  },
 ];
 ```
 
@@ -257,8 +285,8 @@ Before deploying your new book, verify:
 - [ ] Images are placed in correct directory: `public/books/<book-id>/`
 - [ ] Book component is created with proper naming conventions
 - [ ] `bookKey` matches directory name and route
-- [ ] `images` array has correct paths and order
-- [ ] `texts` array matches `images` array length
+- [ ] `pages` array has correct image paths and order
+- [ ] Each page object has both `image` and `text` properties
 - [ ] Route is added to `App.tsx`
 - [ ] Import statement is added to `App.tsx`
 - [ ] Preview entry is added to `Home.tsx`
@@ -270,7 +298,7 @@ Before deploying your new book, verify:
 
 ## Common Pitfalls to Avoid
 
-1. **Mismatched Array Lengths:** Ensure `images` and `texts` arrays have the same length
+1. **Missing Properties:** Ensure each page object has both `image` and `text` properties
 2. **Incorrect Paths:** Double-check all image paths start with `/books/`
 3. **Route Conflicts:** Ensure `book-id` is unique across all books
 4. **Missing Imports:** Don't forget to import the component in `App.tsx`

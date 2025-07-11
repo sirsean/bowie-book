@@ -1,20 +1,25 @@
-export type BookProps = Record<string, never>;
+export interface Page {
+  image: string;
+  text: string;
+}
+
+export interface BookProps {
+  bookKey: string;
+  pages: Page[];
+}
 
 export interface PageProps {
   bookKey: string;
-  images: string[];
-  texts: string[];
+  pages: Page[];
   page: number;
 }
 
 export interface PageRouteProps {
   bookKey: string;
-  images: string[];
-  texts: string[];
+  pages: Page[];
 }
 
 export interface BookData {
   bookKey: string;
-  images: string[];
-  texts: string[];
+  pages: Page[];
 }
