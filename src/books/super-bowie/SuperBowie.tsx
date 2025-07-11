@@ -17,7 +17,7 @@ export default function SuperBowie(): JSX.Element | null {
   useEffect(() => {
     const loadBookData = async () => {
       try {
-        const response = await fetch('/super-bowie.yaml');
+        const response = await fetch('/books/super-bowie.yaml');
         if (!response.ok) {
           if (response.status === 404) {
             throw new Error('Book file not found. The super-bowie.yaml file may be missing or moved.');
