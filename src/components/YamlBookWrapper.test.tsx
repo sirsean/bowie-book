@@ -104,7 +104,7 @@ describe('YamlBookWrapper', () => {
 
       expect(screen.getByTestId('book-error')).toBeInTheDocument();
       expect(screen.getByTestId('error-message')).toHaveTextContent(errorMessage);
-      expect(screen.getByTestId('book-title')).toHaveTextContent('Book');
+      expect(screen.getByTestId('book-title')).toHaveTextContent('test-book.yaml');
     });
 
     it('shows book title from data in error state when data is available', () => {
@@ -122,7 +122,7 @@ describe('YamlBookWrapper', () => {
       expect(screen.getByTestId('book-title')).toHaveTextContent('Test Book Title');
     });
 
-    it('falls back to "Book" title when data is null in error state', () => {
+    it('falls back to yamlFileName when data is null in error state', () => {
       const errorMessage = 'Book file not found';
       mockUseBookData.mockReturnValue({
         data: null,
@@ -133,7 +133,7 @@ describe('YamlBookWrapper', () => {
       renderWithRouter(<YamlBookWrapper yamlFileName="missing-book.yaml" />);
 
       expect(screen.getByTestId('book-error')).toBeInTheDocument();
-      expect(screen.getByTestId('book-title')).toHaveTextContent('Book');
+      expect(screen.getByTestId('book-title')).toHaveTextContent('missing-book.yaml');
     });
   });
 
@@ -283,7 +283,7 @@ describe('YamlBookWrapper', () => {
       renderWithRouter(<YamlBookWrapper yamlFileName="test-book.yaml" />);
 
       expect(screen.getByTestId('book-error')).toBeInTheDocument();
-      expect(screen.getByTestId('book-title')).toHaveTextContent('Book');
+      expect(screen.getByTestId('book-title')).toHaveTextContent('test-book.yaml');
     });
   });
 

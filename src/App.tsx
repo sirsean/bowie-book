@@ -1,16 +1,23 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import * as React from 'react';
 import Home from './components/Home';
 
+// Generic lazy-loading factory for YamlBookWrapper
+const lazyYamlBook = (yamlFileName: string): React.LazyExoticComponent<() => JSX.Element> =>
+  lazy(() =>
+    import('./components/YamlBookWrapper').then((m) => ({
+      default: () => <m.default yamlFileName={yamlFileName} />,
+    }))
+  );
+
 // Lazy load book components for better performance
-const BonneAdventure = lazy(() => import('./books/bonne-adventure/BonneAdventure'));
-const DragonFighter = lazy(() => import('./books/dragon-fighter/DragonFighter'));
-const SkywardBound = lazy(() => import('./books/skyward-bound/SkywardBound'));
-const ZiggyTheBunny = lazy(() => import('./books/ziggy-the-bunny/ZiggyTheBunny'));
-const SuperBowie = lazy(() => import('./books/super-bowie/SuperBowie'));
-const SuperkittySavesBunnytown = lazy(
-  () => import('./books/superkitty-saves-bunnytown/SuperkittySavesBunnytown')
-);
+const BonneAdventure = lazyYamlBook('bonne-adventure.yaml');
+const DragonFighter = lazyYamlBook('dragon-fighter.yaml');
+const SkywardBound = lazyYamlBook('skyward-bound.yaml');
+const ZiggyTheBunny = lazyYamlBook('ziggy-the-bunny.yaml');
+const SuperBowie = lazyYamlBook('super-bowie.yaml');
+const SuperkittySavesBunnytown = lazyYamlBook('superkitty-saves-bunnytown.yaml');
 
 /**
  * Main App component with routes to the home page and all books
@@ -18,7 +25,13 @@ const SuperkittySavesBunnytown = lazy(
 function App(): JSX.Element {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="loading">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center min-h-screen bg-background-grad bg-[length:400%_400%] animate-gradient-slow">
+            <div className="text-white text-2xl font-bold animate-pulse">Loading...</div>
+          </div>
+        }
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bonne-adventure/*" element={<BonneAdventure />} />

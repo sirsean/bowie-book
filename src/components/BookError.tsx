@@ -12,7 +12,7 @@ interface BookErrorProps {
 export default function BookError({ error, bookTitle }: BookErrorProps): JSX.Element {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background-grad bg-[length:400%_400%] animate-gradient-slow p-4">
-      <div className="text-center max-w-lg bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 shadow-2xl">
+      <div className="text-center max-w-4xl bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 shadow-2xl">
         <div className="text-6xl mb-4">📚</div>
         <h2 className="text-3xl font-bold text-white mb-4">Oops! Book Not Found</h2>
         <p className="text-white/90 mb-6 text-lg leading-relaxed">

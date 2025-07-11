@@ -22,7 +22,7 @@ export default function YamlBookWrapper({
   }
 
   if (error) {
-    return <BookError error={error} bookTitle={data?.title || 'Book'} />;
+    return <BookError error={error} bookTitle={data?.title || yamlFileName} />;
   }
 
   if (data) {

@@ -8,7 +8,14 @@ pages:
   - image: '/books/skyward-bound/2.webp'
     text: "Through the cotton-candy clouds, Mommy flew fast,\nTo a land where the airplanes were vast.\nThere, with a wrench and a smile, she worked with care,\nWhile butterflies buzzed through the workshop air.\n\n\"With every twist and turn, I think of you,\nMy little princess, brave and true.\""
   - image: '/books/skyward-bound/3.webp'
-    text: "Then came the day, with an engine's roar,\nAn airplane took flight, with Mommy onboard to soar.\nChasing dreams and dodging a playful missile's flight,\nA butterfly co-pilot made sure all was right.\n\n\"Through skies and clouds, we dance and we weave,\nSoon I'll return, on this eve.\""
+    text: |
+      Then came the day, with an engine's roar,
+      An airplane took flight, with Mommy onboard to soar.
+      Chasing dreams and dodging a playful missile's flight,
+      A butterfly co-pilot made sure all was right.
+
+      "Through skies and clouds, we dance and we weave,
+      Soon I'll return, on this eve."
   - image: '/books/skyward-bound/4.webp'
     text: "In the factory's hum, where planes are born,\nMommy inspected the wings at dawn.\nAnd though her hands checked every bolt and every gear,\nHer heart was with Princess, always near.\n\n\"My work ensures these great birds can glide,\nJust like my love for you, wide and wide.\""
   - image: '/books/skyward-bound/5.webp'

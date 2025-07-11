@@ -6,7 +6,7 @@ This guide provides step-by-step instructions for adding a new book/story to the
 
 The Bowie Book application follows a consistent structure for organizing books. Each book consists of:
 - Optimized images stored in the public directory
-- A React component that defines the book's content
+- A YAML file that defines the book's content and metadata
 - Route configuration in the main App component
 - A preview entry on the home page
 
@@ -52,125 +52,18 @@ public/books/my-new-book/
 └── 4-ending.webp
 ```
 
-### Step 2: Create Book Component
+### Step 2: Add Book Route and Preview
 
-#### 2.1 Create Book Directory
-Create a new directory under `src/books/` using the same book identifier:
-```
-src/books/<book-id>/
-```
+#### 2.1 Define Book Route
 
-#### 2.2 Create Book Component File
-Create `<BookName>.tsx` in the book directory (use PascalCase for the filename):
+Add the route configuration in the `App.tsx` using the unique book identifier:
 
 ```typescript
-import Book from '../../components/Book/Book';
-
-/**
- * [BookName] book component
- *
- * [Brief description of the book's story and theme]
- */
-export default function BookName(): JSX.Element {
-  const bookKey = 'book-id'; // Must match the directory name
-
-  const pages = [
-    {
-      image: '/books/book-id/0-cover.webp',
-      text: 'Book Title',
-    },
-    {
-      image: '/books/book-id/1-opening.webp',
-      text: 'Once upon a time...',
-    },
-    {
-      image: '/books/book-id/2-adventure.webp',
-      text: 'The adventure begins...',
-    },
-    {
-      image: '/books/book-id/3-climax.webp',
-      text: 'The exciting climax...',
-    },
-    {
-      image: '/books/book-id/4-ending.webp',
-      text: 'The happy ending...',
-    },
-  ];
-
-  return <Book bookKey={bookKey} pages={pages} />;
-}
+<Route path="/<book-id>/*" element={<LazyYamlBookWrapper yamlFileName='<book-id>.yaml' />} />;
 ```
 
-#### 2.3 Component Template
-```typescript
-import Book from '../../components/Book/Book';
+#### 2.2 Update Home Component
 
-/**
- * [BOOK_NAME] book component
- *
- * [DESCRIPTION: Brief description of the book's story, characters, and themes]
- */
-export default function [COMPONENT_NAME](): JSX.Element {
-  const bookKey = '[BOOK_ID]'; // URL-friendly identifier
-
-  const pages = [
-    {
-      image: '/books/[BOOK_ID]/0-cover.[ext]',
-      text: '[BOOK_TITLE]',
-    },
-    // Add subsequent pages...
-    // {
-    //   image: '/books/[BOOK_ID]/1.[ext]',
-    //   text: 'Page 1 text content...',
-    // },
-  ];
-
-  return <Book bookKey={bookKey} pages={pages} />;
-}
-```
-
-#### 2.4 Naming Conventions
-- **Component Name:** Use PascalCase (e.g., `MyNewBook`)
-- **File Name:** Match component name (e.g., `MyNewBook.tsx`)
-- **Book Key:** Use kebab-case matching directory name (e.g., `my-new-book`)
-
-### Step 3: Add Route in App.tsx
-
-#### 3.1 Import the Component
-Add the import statement at the top of `src/App.tsx`:
-```typescript
-import BookName from './books/book-id/BookName';
-```
-
-#### 3.2 Add Route
-Add the route inside the `<Routes>` component:
-```typescript
-<Route path="/book-id/*" element={<BookName />} />
-```
-
-#### 3.3 Complete Example
-```typescript
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-// ... other imports
-import MyNewBook from './books/my-new-book/MyNewBook';
-
-function App(): JSX.Element {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* ... other routes */}
-        <Route path="/my-new-book/*" element={<MyNewBook />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-```
-
-### Step 4: Add Preview Entry to Home Page
-
-#### 4.1 Update Home Component
 Add a new entry to the `books` array in `src/components/Home/Home.tsx`:
 
 ```typescript
@@ -182,15 +75,39 @@ const books: BookPreview[] = [
     coverImage: '/books/book-id/0-cover.webp'
   }
 ];
+
 ```
 
-#### 4.2 Preview Entry Template
-```typescript
-{
-  id: '[BOOK_ID]',           // Must match route and directory
-  title: '[DISPLAY_TITLE]',  // User-friendly title for display
-  coverImage: '[COVER_PATH]' // Path to cover image
-}
+### Step 3: Creating the Book Data (YAML)
+
+#### 3.1 Create Book YAML File
+Create a YAML file in the `public/books/` directory with the same book identifier:
+
+```yaml
+# public/books/<book-id>.yaml
+title: "Book Title"
+pages:
+  - image: "/books/<book-id>/0-cover.webp"
+    text: "Book Title"
+  - image: "/books/<book-id>/1-opening.webp"
+    text: "Once upon a time..."
+  - image: "/books/<book-id>/2-adventure.webp"
+    text: "The adventure begins..."
+  - image: "/books/<book-id>/3-climax.webp"
+    text: "The exciting climax..."
+  - image: "/books/<book-id>/4-ending.webp"
+    text: "The happy ending..."
+```
+
+#### 3.2 YAML Template
+```yaml
+title: "[BOOK_TITLE]"
+pages:
+  - image: "/books/[BOOK_ID]/0-cover.[ext]"
+    text: "[BOOK_TITLE]"
+  - image: "/books/[BOOK_ID]/1.[ext]"
+    text: "[PAGE_TEXT]"
+  # Add more pages as needed
 ```
 
 ## Alt Text Guidelines
@@ -271,8 +188,7 @@ After completing all steps, your new book should have this structure:
 │   ├── 1.webp
 │   ├── 2.webp
 │   └── ...
-├── src/books/book-id/
-│   └── BookName.tsx
+├── public/books/book-id.yaml
 ├── src/App.tsx (updated)
 └── src/components/Home/Home.tsx (updated)
 ```
@@ -283,15 +199,14 @@ Before deploying your new book, verify:
 
 - [ ] Images are optimized and properly named
 - [ ] Images are placed in correct directory: `public/books/<book-id>/`
-- [ ] Book component is created with proper naming conventions
-- [ ] `bookKey` matches directory name and route
+- [ ] YAML file is created with proper structure
+- [ ] `title` field matches the book's display title
 - [ ] `pages` array has correct image paths and order
 - [ ] Each page object has both `image` and `text` properties
 - [ ] Route is added to `App.tsx`
-- [ ] Import statement is added to `App.tsx`
 - [ ] Preview entry is added to `Home.tsx`
 - [ ] All paths use consistent `book-id`
-- [ ] Component builds without errors
+- [ ] Application builds without errors
 - [ ] Book displays correctly in browser
 - [ ] Navigation works between pages
 - [ ] Home page shows new book preview
@@ -301,7 +216,7 @@ Before deploying your new book, verify:
 1. **Missing Properties:** Ensure each page object has both `image` and `text` properties
 2. **Incorrect Paths:** Double-check all image paths start with `/books/`
 3. **Route Conflicts:** Ensure `book-id` is unique across all books
-4. **Missing Imports:** Don't forget to import the component in `App.tsx`
+4. **YAML Syntax:** Ensure proper YAML formatting with correct indentation
 5. **Case Sensitivity:** Be consistent with file and directory naming
 6. **Image Optimization:** Large images will slow down the application
 
