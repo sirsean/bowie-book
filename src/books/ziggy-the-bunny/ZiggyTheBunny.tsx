@@ -40,5 +40,5 @@ export default function ZiggyTheBunny(): JSX.Element {
     },
   ];
 
-  return <Book bookKey={bookKey} pages={pages} />;
+  return <Book bookKey={bookKey} title="Ziggy the Bunny" pages={pages} />;
 }

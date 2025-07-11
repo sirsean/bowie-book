@@ -48,5 +48,5 @@ export default function SuperkittySavesBunnytown(): JSX.Element {
     },
   ];
 
-  return <Book bookKey={bookKey} pages={pages} />;
+  return <Book bookKey={bookKey} title="Superkitty Saves Bunnytown" pages={pages} />;
 }

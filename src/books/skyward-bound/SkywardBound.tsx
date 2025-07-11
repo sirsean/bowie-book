@@ -76,5 +76,5 @@ export default function SkywardBound(): JSX.Element {
     },
   ];
 
-  return <Book bookKey={bookKey} pages={pages} />;
+  return <Book bookKey={bookKey} title="Skyward Bound" pages={pages} />;
 }

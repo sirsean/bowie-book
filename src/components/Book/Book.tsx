@@ -33,17 +33,8 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
   const goToHome = useCallback(() => navigate('/'), [navigate]);
   const goToCover = useCallback(() => navigate(`/${bookKey}`), [navigate, bookKey]);
 
-  // Make sure we have a valid page
-  if (!pages || pages.length === 0) {
-    return (
-      <div className="flex flex-col justify-center items-center min-h-screen text-center bg-background-grad p-4 animate-fade">
-        <h2 className="text-2xl font-bold text-white mb-6">No Pages Available</h2>
-        <p className="text-white/80">There seems to be an issue with loading the book pages. Please try again later or contact support.</p>
-      </div>
-    );
-  }
-
-  const currentPage = pages[page];
+  // Get current page data
+  const currentPage = pages?.[page];
   const imgSrc = currentPage?.image;
   const text = currentPage?.text;
 
@@ -75,7 +66,19 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
     };
   }, [page, imgSrc, bookKey, goToNext, goToPrevious, navigate]);
 
-  // Early return after all hooks have been called
+  // Early returns after all hooks have been called
+  if (!pages || pages.length === 0) {
+    return (
+      <div className="flex flex-col justify-center items-center min-h-screen text-center bg-background-grad p-4 animate-fade">
+        <h2 className="text-2xl font-bold text-white mb-6">No Pages Available</h2>
+        <p className="text-white/80">
+          There seems to be an issue with loading the book pages. Please try again later or contact
+          support.
+        </p>
+      </div>
+    );
+  }
+
   if (!imgSrc) {
     return null;
   }
@@ -168,7 +171,9 @@ const PageRoute = ({ bookKey, pages }: Omit<PageProps, 'page'>): JSX.Element => 
   const pageNum = parseInt(page || '0', 10);
 
   // Validate page number to prevent issues
-  const validPageNum = isNaN(pageNum) ? 0 : Math.max(0, Math.min(pageNum, (pages?.length || 1) - 1));
+  const validPageNum = isNaN(pageNum)
+    ? 0
+    : Math.max(0, Math.min(pageNum, (pages?.length || 1) - 1));
 
   return <Page bookKey={bookKey} pages={pages} page={validPageNum} />;
 };

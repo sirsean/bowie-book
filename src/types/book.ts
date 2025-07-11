@@ -21,5 +21,6 @@ export interface PageRouteProps {
 
 export interface BookData {
   bookKey: string;
+  title: string;
   pages: Page[];
 }

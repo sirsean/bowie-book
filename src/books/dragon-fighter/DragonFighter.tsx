@@ -52,5 +52,5 @@ export default function DragonFighter(): JSX.Element {
     },
   ];
 
-  return <Book bookKey={bookKey} pages={pages} />;
+  return <Book bookKey={bookKey} title="Dragon Fighter" pages={pages} />;
 }

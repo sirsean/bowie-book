@@ -48,6 +48,7 @@ afterEach(() => {
 
 const mockBookData: BookData = {
   bookKey: 'test-book',
+  title: 'Test Book',
   pages: [
     { image: '/images/cover.jpg', text: 'Cover page text' },
     { image: '/images/page1.jpg', text: 'Page 1 text content' },
