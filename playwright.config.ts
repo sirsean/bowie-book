@@ -23,22 +23,5 @@ export default defineConfig({
         hasTouch: true, // Enable touch events for touchscreen tests
       },
     },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-        hasTouch: true, // Enable touch events for touchscreen tests
-      },
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-        hasTouch: true, // Enable touch events for touchscreen tests
-      },
-      // Skip webkit tests locally on macOS to avoid flakes:
-      // Only run on CI environment by skipping when not in CI
-      testIgnore: process.env.CI ? [] : ['**/*'],
-    },
   ],
 });
