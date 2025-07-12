@@ -6,6 +6,7 @@ const config: Config = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 
   // Plugins can still be added here if needed
+  safelist: ['animate-page-turn-3d', 'animate-page-turn', 'animate-page-turn-shadow'],
   plugins: [],
 };
 

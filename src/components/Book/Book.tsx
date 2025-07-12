@@ -77,7 +77,7 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
     // Use setTimeout as fallback in case animationend doesn't fire
     const timeoutId = setTimeout(() => {
       wrapperElement?.classList.remove('animate-page-turn');
-    }, 1000); // Adjust timeout based on animation duration
+    }, 600); // Match animation duration
 
     wrapperElement?.addEventListener('animationend', handleAnimationEnd);
 
@@ -150,11 +150,11 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
             <div className="absolute top-1 left-1 right-1 bottom-1 bg-background rounded-full"></div>
           </div>
         )}
-        <div ref={wrapperRef}>
+        <div ref={wrapperRef} className="page-wrapper">
           <img
             src={imgSrc}
             alt={`Page ${page}`}
-            className="max-h-[85vh] max-w-[92vw] sm:max-h-[80vh] md:max-h-[85vh] lg:max-h-[90vh] object-contain rounded-lg border-4 md:border-5 border-white shadow-2xl"
+            className="book-image max-h-[85vh] max-w-[92vw] sm:max-h-[80vh] md:max-h-[85vh] lg:max-h-[90vh] object-contain rounded-lg border-4 md:border-5 border-white shadow-2xl"
             onLoad={() => setLoading(false)}
           />
         </div>
