@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 import { BookData, type Page } from '../../types/book';
 
@@ -14,6 +14,7 @@ interface PageProps {
 const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Navigation functions
   const goToPrevious = useCallback(() => {
@@ -49,6 +50,12 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
     // Reset loading state when page changes
     setLoading(true);
 
+    // Capture the current wrapper element for cleanup
+    const wrapperElement = wrapperRef.current;
+
+    // Trigger page turn animation
+    wrapperElement?.classList.add('animate-page-turn');
+
     // Load current image
     const img = new Image();
     img.src = imgSrc;
@@ -61,8 +68,23 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
     };
 
     window.addEventListener('keydown', handleKeyDown);
+
+    // Remove animation class after animation completes
+    const handleAnimationEnd = () => {
+      wrapperElement?.classList.remove('animate-page-turn');
+    };
+
+    // Use setTimeout as fallback in case animationend doesn't fire
+    const timeoutId = setTimeout(() => {
+      wrapperElement?.classList.remove('animate-page-turn');
+    }, 1000); // Adjust timeout based on animation duration
+
+    wrapperElement?.addEventListener('animationend', handleAnimationEnd);
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      wrapperElement?.removeEventListener('animationend', handleAnimationEnd);
+      clearTimeout(timeoutId);
     };
   }, [page, imgSrc, bookKey, goToNext, goToPrevious, navigate]);
 
@@ -119,7 +141,7 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
       </nav>
 
       {/* Image container */}
-      <div className="flex-1 flex items-center justify-center relative p-4">
+      <div className="flex-1 flex items-center justify-center relative p-2 md:p-4 overflow-hidden">
         {loading && (
           <div
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-conic-gradient animate-loader"
@@ -128,12 +150,14 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
             <div className="absolute top-1 left-1 right-1 bottom-1 bg-background rounded-full"></div>
           </div>
         )}
-        <img
-          src={imgSrc}
-          alt={`Page ${page}`}
-          className="max-w-[95%] max-h-[95%] rounded-lg border-4 md:border-5 border-white shadow-2xl animate-float object-contain sm:max-w-[92%] sm:max-h-[85%]"
-          onLoad={() => setLoading(false)}
-        />
+        <div ref={wrapperRef}>
+          <img
+            src={imgSrc}
+            alt={`Page ${page}`}
+            className="max-h-[85vh] max-w-[92vw] sm:max-h-[80vh] md:max-h-[85vh] lg:max-h-[90vh] object-contain rounded-lg border-4 md:border-5 border-white shadow-2xl"
+            onLoad={() => setLoading(false)}
+          />
+        </div>
       </div>
 
       {/* Touch navigation overlay for left/right swipes */}
@@ -153,7 +177,7 @@ const Page = ({ bookKey, page, pages }: PageProps): JSX.Element | null => {
       {/* Text overlay at bottom */}
       {text && (
         <div
-          className="absolute bottom-0 left-0 w-full max-h-[40%] overflow-y-auto p-5 text-white text-lg leading-relaxed bg-gradient-to-t from-purple/90 via-blue/80 via-80% to-blue/10 backdrop-blur border-t border-white/30 text-shadow shadow-text z-overlay md:text-xl md:p-5 sm:text-base sm:p-3 sm:max-h-[50%]"
+          className="absolute bottom-0 left-0 w-full max-h-[40%] overflow-y-auto p-5 text-white text-lg leading-relaxed bg-gradient-to-t from-purple/60 via-blue/40 via-80% to-blue/5 backdrop-blur-sm border-t border-white/20 text-shadow shadow-text z-overlay md:text-xl md:p-5 sm:text-base sm:p-3 sm:max-h-[50%]"
           data-testid="text-overlay"
         >
           {text}

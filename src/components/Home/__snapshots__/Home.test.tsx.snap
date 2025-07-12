@@ -2,7 +2,7 @@
 
 exports[`Home Component > Grid Layout > matches grid layout snapshot 1`] = `
 <div
-  class="w-full min-h-screen text-center bg-rainbow-animated bg-[length:400%_400%] animate-gradient-slow p-4"
+  class="w-full min-h-screen text-center bg-rainbow-animated bg-[length:400%_400%] animate-gradient-slow p-2 md:p-4"
 >
   <h1
     class="text-3xl md:text-4xl font-bold text-white drop-shadow-lg relative inline-block px-2 py-1"
