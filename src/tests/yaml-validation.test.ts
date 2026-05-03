@@ -155,6 +155,7 @@ describe('Book YAML Files Validation', () => {
       const expectedBooks = [
         'bonne-adventure.yaml',
         'dragon-fighter.yaml',
+        'princess-bowie-fights-evil-santa.yaml',
         'skyward-bound.yaml',
         'super-bowie.yaml',
         'superkitty-saves-bunnytown.yaml',

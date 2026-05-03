@@ -14,12 +14,12 @@ const renderWithRouter = (initialEntries: string[] = ['/']) => {
 
 describe('Home Component', () => {
   describe('Book Cards Rendering', () => {
-    it('renders 6 book cards with correct cover images and alt text', () => {
+    it('renders 7 book cards with correct cover images and alt text', () => {
       renderWithRouter();
 
-      // Check that 6 book covers are rendered
+      // Check that 7 book covers are rendered
       const bookCovers = screen.getAllByRole('img');
-      expect(bookCovers).toHaveLength(6);
+      expect(bookCovers).toHaveLength(7);
 
       // Verify each book cover has correct src and alt text
       const expectedBooks = [
@@ -31,6 +31,10 @@ describe('Home Component', () => {
         {
           title: 'Superkitty Saves Bunnytown',
           coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png',
+        },
+        {
+          title: 'Princess Bowie Fights Evil Santa',
+          coverImage: '/books/princess-bowie-fights-evil-santa/0-cover.webp',
         },
       ];
 
@@ -52,6 +56,7 @@ describe('Home Component', () => {
         'Ziggy the Bunny',
         'Super Bowie',
         'Superkitty Saves Bunnytown',
+        'Princess Bowie Fights Evil Santa',
       ];
 
       expectedTitles.forEach((title) => {
@@ -138,6 +143,18 @@ describe('Home Component', () => {
 
       expect(superkittyLink).toHaveAttribute('href', '/superkitty-saves-bunnytown');
     });
+
+    it('clicking on Princess Bowie Fights Evil Santa cover navigates to the book page', async () => {
+      const user = userEvent.setup();
+      renderWithRouter();
+
+      const princessLink = screen.getByRole('link', {
+        name: /princess bowie fights evil santa cover princess bowie fights evil santa/i,
+      });
+      await user.click(princessLink);
+
+      expect(princessLink).toHaveAttribute('href', '/princess-bowie-fights-evil-santa');
+    });
   });
 
   describe('Accessibility', () => {
@@ -151,6 +168,7 @@ describe('Home Component', () => {
         'Ziggy the Bunny Cover',
         'Super Bowie Cover',
         'Superkitty Saves Bunnytown Cover',
+        'Princess Bowie Fights Evil Santa Cover',
       ];
 
       expectedAltTexts.forEach((altText) => {
@@ -162,7 +180,7 @@ describe('Home Component', () => {
       renderWithRouter();
 
       const links = screen.getAllByRole('link');
-      expect(links).toHaveLength(6);
+      expect(links).toHaveLength(7);
 
       links.forEach((link) => {
         expect(link).toHaveAttribute('href');
@@ -194,9 +212,9 @@ describe('Home Component', () => {
       const gridContainer = container.querySelector('[class*="grid"]');
       expect(gridContainer).toBeInTheDocument();
 
-      // Check that grid items are present (6 books)
+      // Check that grid items are present (7 books)
       const gridItems = gridContainer?.children;
-      expect(gridItems).toHaveLength(6);
+      expect(gridItems).toHaveLength(7);
     });
 
     it('matches grid layout snapshot', () => {

@@ -37,6 +37,11 @@ const books: BookPreview[] = [
     title: 'Superkitty Saves Bunnytown',
     coverImage: '/books/superkitty-saves-bunnytown/superkitty-cover.png',
   },
+  {
+    id: 'princess-bowie-fights-evil-santa',
+    title: 'Princess Bowie Fights Evil Santa',
+    coverImage: '/books/princess-bowie-fights-evil-santa/0-cover.webp',
+  },
 ];
 
 /**
