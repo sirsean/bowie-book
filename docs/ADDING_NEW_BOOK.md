@@ -6,9 +6,27 @@ This guide provides step-by-step instructions for adding a new book/story to the
 
 The Bowie Book application follows a consistent structure for organizing books. Each book consists of:
 - Optimized images stored in the public directory
-- A YAML file that defines the book's content and metadata
+- A YAML file that defines the book's content and metadata (including a required **`bookKey`**)
 - Route configuration in the main App component
 - A preview entry on the home page
+- Updates to automated tests so CI stays green (see [Update automated tests](#update-automated-tests))
+
+## Book identifier (`bookKey`)
+
+Use one **slug** everywhere (kebab-case recommended), for example `my-new-story`:
+
+| Place | Must match slug |
+|--------|------------------|
+| Image folder | `public/books/<slug>/` |
+| YAML file name | `public/books/<slug>.yaml` |
+| YAML field `bookKey` | Exactly `<slug>` (unit tests require it to match the filename without `.yaml` / `.yml`) |
+| `App.tsx` route | `path="/<slug>/*"` |
+| `Home.tsx` `id` | `'<slug>'` (used in links as `/<slug>`) |
+| Every `pages[].image` path | Should be under `/books/<slug>/...` (CI checks paths start with `/books/` and contain `bookKey`) |
+
+The reader navigates with URLs like `/<slug>`, `/<slug>/1`, … using this `bookKey`. If `bookKey` disagrees with the filename or routes, the app or tests will break.
+
+**Cover image path (CI):** The first page is treated as the cover in `src/tests/yaml-validation.test.ts`. Its `image` path should include `cover` or `0` (case-insensitive), for example `0-cover.webp` or `0.webp`.
 
 ## Step-by-Step Guide
 
@@ -54,15 +72,18 @@ public/books/my-new-book/
 
 ### Step 2: Add Book Route and Preview
 
-#### 2.1 Define Book Route
+#### 2.1 Define book route and lazy loader
 
-Add the route configuration in the `App.tsx` using the unique book identifier:
+In `src/App.tsx`, follow the same pattern as existing books: add a lazy component with `lazyYamlBook` and a route with a trailing `/*` (required for nested routes inside `Book`).
 
 ```typescript
-<Route path="/<book-id>/*" element={<LazyYamlBookWrapper yamlFileName='<book-id>.yaml' />} />;
+const MyNewStory = lazyYamlBook('my-new-story.yaml');
+
+// Inside <Routes>:
+<Route path="/my-new-story/*" element={<MyNewStory />} />
 ```
 
-#### 2.2 Update Home Component
+#### 2.2 Update Home component
 
 Add a new entry to the `books` array in `src/components/Home/Home.tsx`:
 
@@ -70,45 +91,54 @@ Add a new entry to the `books` array in `src/components/Home/Home.tsx`:
 const books: BookPreview[] = [
   // ... existing books
   {
-    id: 'book-id',
+    id: 'my-new-story',
     title: 'Book Title',
-    coverImage: '/books/book-id/0-cover.webp'
-  }
+    coverImage: '/books/my-new-story/0-cover.webp',
+  },
 ];
-
 ```
 
-### Step 3: Creating the Book Data (YAML)
+`id` must match **`bookKey`** and the route segment (`/<id>`).
 
-#### 3.1 Create Book YAML File
-Create a YAML file in the `public/books/` directory with the same book identifier:
+### Step 3: Creating the book data (YAML)
+
+#### 3.1 Create book YAML file
+
+Create `public/books/<book-id>.yaml` (same `<book-id>` as the folder and `bookKey`).
 
 ```yaml
 # public/books/<book-id>.yaml
-title: "Book Title"
+bookKey: '<book-id>'
+title: 'Book Title'
 pages:
-  - image: "/books/<book-id>/0-cover.webp"
-    text: "Book Title"
-  - image: "/books/<book-id>/1-opening.webp"
-    text: "Once upon a time..."
-  - image: "/books/<book-id>/2-adventure.webp"
-    text: "The adventure begins..."
-  - image: "/books/<book-id>/3-climax.webp"
-    text: "The exciting climax..."
-  - image: "/books/<book-id>/4-ending.webp"
-    text: "The happy ending..."
+  - image: '/books/<book-id>/0-cover.webp'
+    text: 'Book Title'
+  - image: '/books/<book-id>/1-opening.webp'
+    text: 'Once upon a time...'
+  - image: '/books/<book-id>/2-adventure.webp'
+    text: 'The adventure begins...'
+  - image: '/books/<book-id>/3-climax.webp'
+    text: 'The exciting climax...'
+  - image: '/books/<book-id>/4-ending.webp'
+    text: 'The happy ending...'
 ```
 
-#### 3.2 YAML Template
+In YAML strings, escape a single quote inside text by doubling it (e.g. `don''t`), matching existing books.
+
+#### 3.2 YAML template
+
 ```yaml
-title: "[BOOK_TITLE]"
+bookKey: '[BOOK_ID]'
+title: '[BOOK_TITLE]'
 pages:
-  - image: "/books/[BOOK_ID]/0-cover.[ext]"
-    text: "[BOOK_TITLE]"
-  - image: "/books/[BOOK_ID]/1.[ext]"
-    text: "[PAGE_TEXT]"
+  - image: '/books/[BOOK_ID]/0-cover.[ext]'
+    text: '[BOOK_TITLE]'
+  - image: '/books/[BOOK_ID]/1.[ext]'
+    text: '[PAGE_TEXT]'
   # Add more pages as needed
 ```
+
+Required fields are validated in `src/tests/yaml-validation.test.ts`: `bookKey`, `title`, and `pages` with `image` and `text` on every page.
 
 ## Alt Text Guidelines
 
@@ -190,8 +220,25 @@ After completing all steps, your new book should have this structure:
 │   └── ...
 ├── public/books/book-id.yaml
 ├── src/App.tsx (updated)
-└── src/components/Home/Home.tsx (updated)
+├── src/components/Home/Home.tsx (updated)
+├── src/tests/yaml-validation.test.ts (expected book list)
+├── src/components/Home/Home.test.tsx (cover count and expected books)
+└── tests/e2e/home.spec.ts (cover count and expected titles)
 ```
+
+## Update automated tests
+
+CI validates every `*.yaml` / `*.yml` under `public/books/` and expects a fixed list of book files. After adding a new YAML book, update the following so `npm run test:unit` and `npm run e2e:ci` pass.
+
+| File | What to change |
+|------|----------------|
+| `src/tests/yaml-validation.test.ts` | Add `'<book-id>.yaml'` to the `expectedBooks` array in the test *“should validate all expected book files exist”*. |
+| `src/components/Home/Home.test.tsx` | Increase the expected number of cover images (e.g. `toHaveLength(6)` → `7`) and add the new book to the `expectedBooks` array (`title` + `coverImage`). |
+| `tests/e2e/home.spec.ts` | Bump `toHaveCount(N)` for book covers, add the new title to `expectedBooks`, and adjust the book link `href` assertion if you use characters outside `[a-z-]` in ids. |
+
+Other E2E specs (for example `tests/e2e/book-navigation.spec.ts`) hard-code page counts or flows for specific books. Update those only if you change those books or add new scenarios there.
+
+If `Home.tsx` layout or copy changes snapshots, run `npm run test:update-snapshots` and review the diff.
 
 ## Checklist
 
@@ -200,37 +247,47 @@ Before deploying your new book, verify:
 - [ ] Images are optimized and properly named
 - [ ] Images are placed in correct directory: `public/books/<book-id>/`
 - [ ] YAML file is created with proper structure
+- [ ] **`bookKey` is set and matches the YAML filename** (without `.yaml` / `.yml`)
 - [ ] `title` field matches the book's display title
 - [ ] `pages` array has correct image paths and order
 - [ ] Each page object has both `image` and `text` properties
-- [ ] Route is added to `App.tsx`
-- [ ] Preview entry is added to `Home.tsx`
+- [ ] First page `image` path suggests a cover (`cover` or `0` in the filename) for validation tests
+- [ ] All `image` paths start with `/books/` and include `bookKey`
+- [ ] Route and lazy loader are added to `App.tsx`
+- [ ] Preview entry is added to `Home.tsx` with `id` equal to `bookKey`
+- [ ] **Unit and E2E tests updated** (see [Update automated tests](#update-automated-tests))
 - [ ] All paths use consistent `book-id`
-- [ ] Application builds without errors
+- [ ] Application builds without errors (`npm run build`)
 - [ ] Book displays correctly in browser
 - [ ] Navigation works between pages
 - [ ] Home page shows new book preview
 
-## Common Pitfalls to Avoid
+## Common pitfalls to avoid
 
-1. **Missing Properties:** Ensure each page object has both `image` and `text` properties
-2. **Incorrect Paths:** Double-check all image paths start with `/books/`
-3. **Route Conflicts:** Ensure `book-id` is unique across all books
-4. **YAML Syntax:** Ensure proper YAML formatting with correct indentation
-5. **Case Sensitivity:** Be consistent with file and directory naming
-6. **Image Optimization:** Large images will slow down the application
+1. **Missing or mismatched `bookKey`:** It must be present and equal to the YAML basename; otherwise `yaml-validation.test.ts` fails and URLs will not match `Home` links.
+2. **Missing properties:** Ensure each page object has both `image` and `text` properties (`text` may be empty).
+3. **Incorrect paths:** Double-check all image paths start with `/books/` and include the same slug as `bookKey`.
+4. **Route conflicts:** Ensure `book-id` is unique across all books.
+5. **YAML syntax:** Use correct indentation; escape `'` inside single-quoted strings as `''`.
+6. **Case sensitivity:** Be consistent with file and directory naming.
+7. **Image optimization:** Large images will slow down the application.
+8. **Forgotten test updates:** Adding `public/books/new.yaml` without updating `expectedBooks` in `yaml-validation.test.ts` breaks CI.
 
-## Testing Your New Book
+## Testing your new book
 
-1. **Build Test:** Run `npm run build` to ensure no TypeScript errors
-2. **Local Testing:** Run `npm run dev` and test in browser
-3. **Navigation Test:** Verify all page navigation works correctly
-4. **Responsive Test:** Check the book displays well on different screen sizes
-5. **Performance Test:** Verify images load reasonably quickly
+1. **Unit tests:** `npm run test:unit` (includes YAML structure checks for all books in `public/books/`).
+2. **Build:** `npm run build` for TypeScript and Vite.
+3. **E2E:** `npm run e2e` or `npm run e2e:ci` (install browsers once: `npx playwright install --with-deps`).
+4. **Full suite:** `npm run test` or `npm run ci:test` to mirror CI more closely.
+5. **Local manual check:** `npm run dev` — navigation, keyboard, and touch areas.
+6. **Responsive and performance:** Check key breakpoints and image load times.
 
-## Additional Resources
+See [Testing Guidelines](./TESTING_GUIDELINES.md) for more detail.
 
-- **React Router Documentation:** For advanced routing needs
+## Additional resources
+
+- **[AGENTS.md](../AGENTS.md)** — Agent-oriented overview of the repo and the same book workflow
+- **React Router documentation:** For advanced routing needs
 - **Image Optimization Tools:** Consider using tools like ImageOptim or online WebP converters
 - **Accessibility Guidelines:** Follow WCAG guidelines for alt text and navigation
 - **TypeScript Documentation:** For type safety and component interfaces
