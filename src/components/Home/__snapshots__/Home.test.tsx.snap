@@ -164,6 +164,27 @@ exports[`Home Component > Grid Layout > matches grid layout snapshot 1`] = `
         </div>
       </a>
     </div>
+    <div
+      class="relative rounded-lg overflow-hidden shadow-lg aspect-square hover:scale-105 transition-transform border-4 border-white"
+      style="border-color: var(--color-orange); box-shadow: var(--rainbow-shadow);"
+    >
+      <a
+        class="block w-full h-full relative overflow-hidden focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        href="/rainbowie"
+      >
+        <img
+          alt="Rainbowie Cover"
+          class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+          loading="lazy"
+          src="/books/rainbowie/0-cover.webp"
+        />
+        <div
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 pb-2 text-center text-xl font-bold transition-opacity duration-300"
+        >
+          Rainbowie
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 `;

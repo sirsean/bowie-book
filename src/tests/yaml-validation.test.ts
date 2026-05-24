@@ -156,6 +156,7 @@ describe('Book YAML Files Validation', () => {
         'bonne-adventure.yaml',
         'dragon-fighter.yaml',
         'princess-bowie-fights-evil-santa.yaml',
+        'rainbowie.yaml',
         'skyward-bound.yaml',
         'super-bowie.yaml',
         'superkitty-saves-bunnytown.yaml',

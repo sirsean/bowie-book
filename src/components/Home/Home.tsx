@@ -42,6 +42,11 @@ const books: BookPreview[] = [
     title: 'Princess Bowie Fights Evil Santa',
     coverImage: '/books/princess-bowie-fights-evil-santa/0-cover.webp',
   },
+  {
+    id: 'rainbowie',
+    title: 'Rainbowie',
+    coverImage: '/books/rainbowie/0-cover.webp',
+  },
 ];
 
 /**

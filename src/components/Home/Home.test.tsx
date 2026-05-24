@@ -14,12 +14,12 @@ const renderWithRouter = (initialEntries: string[] = ['/']) => {
 
 describe('Home Component', () => {
   describe('Book Cards Rendering', () => {
-    it('renders 7 book cards with correct cover images and alt text', () => {
+    it('renders 8 book cards with correct cover images and alt text', () => {
       renderWithRouter();
 
-      // Check that 7 book covers are rendered
+      // Check that 8 book covers are rendered
       const bookCovers = screen.getAllByRole('img');
-      expect(bookCovers).toHaveLength(7);
+      expect(bookCovers).toHaveLength(8);
 
       // Verify each book cover has correct src and alt text
       const expectedBooks = [
@@ -36,6 +36,7 @@ describe('Home Component', () => {
           title: 'Princess Bowie Fights Evil Santa',
           coverImage: '/books/princess-bowie-fights-evil-santa/0-cover.webp',
         },
+        { title: 'Rainbowie', coverImage: '/books/rainbowie/0-cover.webp' },
       ];
 
       expectedBooks.forEach((book, index) => {
@@ -57,6 +58,7 @@ describe('Home Component', () => {
         'Super Bowie',
         'Superkitty Saves Bunnytown',
         'Princess Bowie Fights Evil Santa',
+        'Rainbowie',
       ];
 
       expectedTitles.forEach((title) => {
@@ -169,6 +171,7 @@ describe('Home Component', () => {
         'Super Bowie Cover',
         'Superkitty Saves Bunnytown Cover',
         'Princess Bowie Fights Evil Santa Cover',
+        'Rainbowie Cover',
       ];
 
       expectedAltTexts.forEach((altText) => {
@@ -180,7 +183,7 @@ describe('Home Component', () => {
       renderWithRouter();
 
       const links = screen.getAllByRole('link');
-      expect(links).toHaveLength(7);
+      expect(links).toHaveLength(8);
 
       links.forEach((link) => {
         expect(link).toHaveAttribute('href');
@@ -212,9 +215,9 @@ describe('Home Component', () => {
       const gridContainer = container.querySelector('[class*="grid"]');
       expect(gridContainer).toBeInTheDocument();
 
-      // Check that grid items are present (7 books)
+      // Check that grid items are present (8 books)
       const gridItems = gridContainer?.children;
-      expect(gridItems).toHaveLength(7);
+      expect(gridItems).toHaveLength(8);
     });
 
     it('matches grid layout snapshot', () => {

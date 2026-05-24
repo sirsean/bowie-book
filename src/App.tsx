@@ -19,6 +19,7 @@ const ZiggyTheBunny = lazyYamlBook('ziggy-the-bunny.yaml');
 const SuperBowie = lazyYamlBook('super-bowie.yaml');
 const SuperkittySavesBunnytown = lazyYamlBook('superkitty-saves-bunnytown.yaml');
 const PrincessBowieFightsEvilSanta = lazyYamlBook('princess-bowie-fights-evil-santa.yaml');
+const Rainbowie = lazyYamlBook('rainbowie.yaml');
 
 /**
  * Main App component with routes to the home page and all books
@@ -45,6 +46,7 @@ function App(): JSX.Element {
             path="/princess-bowie-fights-evil-santa/*"
             element={<PrincessBowieFightsEvilSanta />}
           />
+          <Route path="/rainbowie/*" element={<Rainbowie />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
