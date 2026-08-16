@@ -47,6 +47,11 @@ const books: BookPreview[] = [
     title: 'Rainbowie',
     coverImage: '/books/rainbowie/0-cover.webp',
   },
+  {
+    id: 'the-evil-mermaid-queen',
+    title: 'The Evil Mermaid Queen',
+    coverImage: '/books/the-evil-mermaid-queen/0-cover.webp',
+  },
 ];
 
 /**

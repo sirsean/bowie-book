@@ -160,6 +160,7 @@ describe('Book YAML Files Validation', () => {
         'skyward-bound.yaml',
         'super-bowie.yaml',
         'superkitty-saves-bunnytown.yaml',
+        'the-evil-mermaid-queen.yaml',
         'ziggy-the-bunny.yaml',
       ];
 

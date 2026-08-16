@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Home Page', () => {
-  test('should load home page and display 8 book covers with correct titles', async ({ page }) => {
+  test('should load home page and display 9 book covers with correct titles', async ({ page }) => {
     // Navigate to home page
     await page.goto('/');
 
@@ -24,11 +24,12 @@ test.describe('Home Page', () => {
       'Superkitty Saves Bunnytown',
       'Princess Bowie Fights Evil Santa',
       'Rainbowie',
+      'The Evil Mermaid Queen',
     ];
 
-    // Check that we have exactly 8 book covers
+    // Check that we have exactly 9 book covers
     const bookCovers = page.locator('[alt*="Cover"]');
-    await expect(bookCovers).toHaveCount(8);
+    await expect(bookCovers).toHaveCount(9);
 
     // Verify each book title is visible
     for (const title of expectedBooks) {
