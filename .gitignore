@@ -43,3 +43,6 @@ build
 # Misc
 .cache
 **/.claude/settings.local.json
+
+# Image consistency run logs (prompts, verdicts, attempts)
+scripts/image-gen/.runs/

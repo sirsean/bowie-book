@@ -5,6 +5,8 @@ export interface BookImagePageSpec {
   filename: string;
   /** Scene-specific prompt; combined with `stylePrefix` from the manifest. */
   prompt: string;
+  /** Optional per-page style prefix; replaces the book-level `stylePrefix` when set. */
+  stylePrefix?: string;
 }
 
 export interface BookImageManifest {

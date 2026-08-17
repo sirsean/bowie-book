@@ -90,7 +90,8 @@ async function main(): Promise<void> {
     if (only && !only.has(i)) continue;
 
     const page = manifest.pages[i];
-    const fullPrompt = `${manifest.stylePrefix}${page.prompt}`.trim();
+    const prefix = page.stylePrefix ?? manifest.stylePrefix;
+    const fullPrompt = `${prefix}${page.prompt}`.trim();
     const dest = join(outDir, page.filename);
 
     console.log(`[${i}] → ${dest}`);

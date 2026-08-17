@@ -20,7 +20,10 @@
     "e2e": "playwright test",
     "e2e:ci": "playwright test --reporter line",
     "ci:test": "vitest run --coverage && playwright test --reporter line",
-    "generate:book-images": "tsx scripts/image-gen/generate.ts"
+    "generate:book-images": "tsx scripts/image-gen/generate.ts",
+    "check:book-bible": "tsx scripts/image-gen/check-bible.ts",
+    "check:book-images": "tsx scripts/image-gen/check-images.ts",
+    "generate:book-images:consistent": "tsx scripts/image-gen/generate-consistent.ts"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

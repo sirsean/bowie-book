@@ -1,0 +1,233 @@
+{
+  "bookKey": "the-evil-mermaid-queen",
+  "title": "The Evil Mermaid Queen",
+  "notes": "Human Bowie (pages 6–7, 13–14) must stay on variant human-beach with pink outfit and sandals. Page 8 uses mermaid-transforming (merge of human-beach + mermaid-transformed). Full mermaid form is mermaid-transformed. Do not invent a second human wardrobe between pages.",
+  "characters": [
+    {
+      "id": "bowie",
+      "displayName": "Bowie",
+      "age": "7-year-old school-age girl",
+      "defaultVariantId": "human-beach",
+      "forbidden": ["toddler proportions", "adult face", "teen fashion"],
+      "variants": [
+        {
+          "id": "human-beach",
+          "label": "Human Bowie on the beach",
+          "form": "human girl",
+          "hair": "blonde, shoulder-length, straight with soft waves",
+          "eyes": "bright blue",
+          "skin": "light warm skin",
+          "outfit": {
+            "top": "pink short-sleeve shirt",
+            "bottom": "simple light shorts or skirt in a soft coordinating pink or white",
+            "shoes": "simple pink or light sandals (not sneakers, not high-tops)",
+            "hairAccessory": "pink hair tie or small pink bow"
+          },
+          "forbidden": [
+            "blue overalls",
+            "blue striped shirt",
+            "blue bow",
+            "pink high-top sneakers",
+            "mermaid tail",
+            "magenta-and-blue mermaid hair"
+          ]
+        },
+        {
+          "id": "mermaid-transforming",
+          "label": "Bowie mid-transformation into mermaid",
+          "form": "mid-transformation: human-beach dissolving into mermaid-transformed",
+          "hair": "blonde hair visibly shifting into big flowing magenta-and-blue mermaid hair (same girl, continuous identity)",
+          "eyes": "bright blue (same as human-beach)",
+          "skin": "light warm skin (same as human-beach)",
+          "outfit": {
+            "onePiece": "pink short-sleeve shirt and pink/white shorts or skirt partially dissolving into a sparkling green rainbow mermaid fin/tail; legs mid-change into fin; still recognizably the same Bowie",
+            "shoes": "sandals gone or dissolving in shallow water — no sneakers",
+            "hairAccessory": "pink hair tie/bow may be fading or falling away as mermaid hair takes over",
+            "extras": ["special glowing magic wand"]
+          },
+          "forbidden": [
+            "blue overalls",
+            "different face or age from human-beach Bowie",
+            "fully human with no mermaid cues",
+            "fully mermaid with no remaining human-beach cues"
+          ]
+        },
+        {
+          "id": "mermaid-transformed",
+          "label": "Mermaid Bowie",
+          "form": "mermaid",
+          "hair": "big flowing magenta-and-blue hair underwater",
+          "eyes": "bright blue",
+          "skin": "light warm skin",
+          "outfit": {
+            "onePiece": "mermaid top with a sparkling green fin/tail with rainbow sheen (no human legs)",
+            "shoes": "none — mermaid fin, no shoes",
+            "hairAccessory": "none required",
+            "extras": ["special magic wand"]
+          },
+          "forbidden": ["human legs while mermaid", "pink beach shirt", "blue overalls"]
+        }
+      ]
+    },
+    {
+      "id": "evil-mermaid-queen",
+      "displayName": "Evil Mermaid Queen",
+      "age": "adult mermaid villain (cartoon, not scary-gore)",
+      "defaultVariantId": "queen-villain",
+      "variants": [
+        {
+          "id": "queen-villain",
+          "label": "Evil Mermaid Queen powerful",
+          "form": "mermaid queen",
+          "hair": "long dramatic dark-purple jewel-toned mermaid hair",
+          "eyes": "sharp expressive eyes",
+          "skin": "cool undertone mermaid skin",
+          "outfit": {
+            "onePiece": "regal black-and-purple mermaid queen attire with a tall crown and a large magic wand topped with a purple crystal (wand not trident)",
+            "shoes": "none — mermaid fin",
+            "extras": ["big purple-crystal magic wand", "undersea treasure accents", "tall crown"]
+          }
+        },
+        {
+          "id": "queen-reforming",
+          "label": "Queen mid-reform into nice young mermaid",
+          "form": "mid-transformation: queen-villain shrinking into queen-reformed",
+          "hair": "dark-purple villain hair visibly softening into bright friendly purple hair on a younger small mermaid (same character continuous identity)",
+          "eyes": "mean eyes softening into kind eyes",
+          "skin": "cool undertone shifting to soft friendly mermaid skin",
+          "outfit": {
+            "onePiece": "regal black-and-purple queen attire dissolving into a simple friendly young-mermaid look (shell top OK) with a regular small mermaid tail; body clearly MUCH smaller than Mermaid Bowie",
+            "shoes": "none — mermaid fin",
+            "extras": [
+              "tall villain crown falling off or already gone",
+              "black/dark oversized queen wand dropping from her hands (falling away, she can no longer hold it)"
+            ]
+          },
+          "forbidden": [
+            "still full-size adult villain queen",
+            "still wearing tall menacing crown firmly",
+            "still gripping the oversized wand",
+            "second separate nice mermaid besides the reforming queen",
+            "third mermaid"
+          ]
+        },
+        {
+          "id": "queen-reformed",
+          "label": "Nice small mermaid",
+          "form": "small friendly mermaid",
+          "hair": "friendly young-mermaid purple hair (soft jewel-tone purple), not a tall menacing queen crown look",
+          "eyes": "kind eyes",
+          "skin": "soft mermaid skin",
+          "outfit": {
+            "onePiece": "simple friendly small/young mermaid (shell top or simple mermaid top OK) with a regular mermaid tail, no oversized queen wand, no tall villain crown",
+            "shoes": "none — mermaid fin"
+          }
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "pageIndex": 0,
+      "sceneGoal": "Book cover: Evil Mermaid Queen as the dramatic focus; title area kept clear.",
+      "characters": [
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 1,
+      "sceneGoal": "Beach with an old wooden sign partly covered by vines; readable tease of the word Mermaids.",
+      "characters": []
+    },
+    {
+      "pageIndex": 2,
+      "sceneGoal": "Visitors hurry into sparkling water past the vine-covered caution sign.",
+      "characters": []
+    },
+    {
+      "pageIndex": 3,
+      "sceneGoal": "Underwater: Evil Mermaid Queen zaps swimmers into fish with her wand.",
+      "characters": [
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 4,
+      "sceneGoal": "Only the Evil Mermaid Queen (no other mermaids). Fish and non-mermaid sea creatures bring her treasure.",
+      "characters": [
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 5,
+      "sceneGoal": "Queen gloats over treasure and power — mwa ha ha energy, still kid-safe.",
+      "characters": [
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 6,
+      "sceneGoal": "Bowie arrives at the beach and peels back vines to read the whole sign.",
+      "characters": [{ "characterId": "bowie", "variantId": "human-beach" }]
+    },
+    {
+      "pageIndex": 7,
+      "sceneGoal": "Bowie realizes the mermaids are bad — same human-beach look as page 6.",
+      "characters": [{ "characterId": "bowie", "variantId": "human-beach" }]
+    },
+    {
+      "pageIndex": 8,
+      "sceneGoal": "Bowie wades in with her wand mid-transformation: same girl as human-beach, pink outfit dissolving into green rainbow fin, hair shifting blonde to magenta-and-blue.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "mermaid-transforming" }
+      ]
+    },
+    {
+      "pageIndex": 9,
+      "sceneGoal": "Mermaid Bowie swims toward the queen's lair with magenta-and-blue hair and green rainbow fin.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "mermaid-transformed" }
+      ]
+    },
+    {
+      "pageIndex": 10,
+      "sceneGoal": "Queen sends fish at Mermaid Bowie; Bowie frees them into people swimming upward. Exactly two mermaids (Bowie + Queen). Show fish and/or newly restored humans with legs — never extra mermaids/merfolk children.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "mermaid-transformed" },
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 11,
+      "sceneGoal": "Magic duel between Mermaid Bowie and the Evil Mermaid Queen.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "mermaid-transformed" },
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 12,
+      "sceneGoal": "Mermaid Bowie zaps the queen; show queen mid-reform — shrinking into a purple-haired young nice mermaid while dropping her black/dark oversized wand. Exactly two mermaids.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "mermaid-transformed" },
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-reforming" }
+      ]
+    },
+    {
+      "pageIndex": 13,
+      "sceneGoal": "Back on shore: human Bowie posts a Nice Mermaid sign; reformed mermaid nearby.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "human-beach" },
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-reformed" }
+      ]
+    },
+    {
+      "pageIndex": 14,
+      "sceneGoal": "Sunset beach party; Nice Mermaid waves from the water.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "human-beach" },
+        { "characterId": "evil-mermaid-queen", "variantId": "queen-reformed" }
+      ]
+    }
+  ]
+}

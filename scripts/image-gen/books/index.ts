@@ -1,10 +1,12 @@
 import type { BookImageManifest } from '../types.js';
 import { princessBowieFightsEvilSanta } from './princess-bowie-fights-evil-santa.js';
 import { rainbowie } from './rainbowie.js';
+import { theEvilMermaidQueen } from './the-evil-mermaid-queen.js';
 
 const byKey: Record<string, BookImageManifest> = {
   'princess-bowie-fights-evil-santa': princessBowieFightsEvilSanta,
   rainbowie,
+  'the-evil-mermaid-queen': theEvilMermaidQueen,
 };
 
 export function getManifest(bookKey: string): BookImageManifest {
