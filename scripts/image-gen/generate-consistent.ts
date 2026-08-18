@@ -272,16 +272,17 @@ async function main(): Promise<void> {
         bookKey,
         pageIndex,
         client,
-        // Page 4: compare to cover only (avoid page-3 queen drift fighting the cover lock).
-        // Page 10: Mermaid Bowie vs accepted page 9; Queen vs accepted page 4.
+        // Mermaid Queen only: page 4 vs cover; page 10 vs 9+4; page 12 vs 10+9.
         siblingIndexes:
-          pageIndex === 4
-            ? [0]
-            : pageIndex === 10
-              ? [9, 4]
-              : pageIndex === 12
-                ? [10, 9]
-                : undefined,
+          bookKey === 'the-evil-mermaid-queen'
+            ? pageIndex === 4
+              ? [0]
+              : pageIndex === 10
+                ? [9, 4]
+                : pageIndex === 12
+                  ? [10, 9]
+                  : undefined
+            : undefined,
       });
 
       attempts.push({ attempt, prompt, verdict });

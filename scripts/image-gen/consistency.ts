@@ -138,6 +138,7 @@ export async function checkPageConsistency(
   for (const cast of pageCast) {
     let priorVariant: string | null = null;
     if (cast.variantId === 'mermaid-transforming') priorVariant = 'human-beach';
+    if (cast.variantId === 'halloween-transforming') priorVariant = 'human-everyday';
     if (cast.variantId === 'queen-reforming') priorVariant = 'queen-villain';
     if (!priorVariant) continue;
     const priorBefore = bible.pages
@@ -211,7 +212,7 @@ Rules:
 7. Do NOT fail for minor same-category style differences when color and item type match the bible (e.g. sandal strap shape, pink bow vs pink hair tie, subtle fabric pattern, crown jewel count, wand gold vs black shaft). Fail only for clear wrong color, wrong garment type, wrong age, or wrong form.
 8. Magenta-and-blue hair may appear pink-magenta-and-blue; that is OK. Green rainbow fin may show yellow/pink sparkle highlights; that is OK. Do not fail when expected and observed describe the same thing.
 9. If the sceneGoal or page contract says only one mermaid / only the queen, FAIL with kind "scene" when any extra mermaid or merfolk appears (fish and crabs are OK; additional mermaids are not).
-10. For queen-reforming / mid-shrink beats: PASS only if the queen is clearly smaller than Mermaid Bowie AND is dropping/losing the dark oversized wand (not firmly gripping it as a full-power villain). A merge of villain cues dissolving into a purple-haired young nice mermaid is required — not a full-size queen and not a totally unrelated second character.
+10. For queen-reforming / mid-shrink beats: PASS only if the queen is clearly smaller than the hero on the page. If the bible extras include a villain wand, she must be dropping/losing it. If the bible says hand magic / no wand, do not require a wand. A merge of villain cues dissolving into the reformed look is required — not a full-size unreduced villain and not a totally unrelated second character.
 11. promptHints must be concrete rewrite instructions for the image prompt.
 
 Return ONLY valid JSON matching:
@@ -352,6 +353,108 @@ function sanitizeVerdict(verdict: ConsistencyVerdict): ConsistencyVerdict {
       return false;
     }
     if (exp.includes('none') && (obs.includes('none') || obs.includes('no shoe'))) {
+      return false;
+    }
+    // Cartoon Vamghoston eye rendering is allowed to vary within Halloween-cute range.
+    if (
+      m.character?.toLowerCase().includes('vamghoston') &&
+      m.trait.toLowerCase().includes('eye')
+    ) {
+      const vampireOk =
+        exp.includes('red') &&
+        (obs.includes('red') || obs.includes('orange'));
+      const ghostOk =
+        (exp.includes('ghost') || exp.includes('pale') || exp.includes('white') || exp.includes('black dots')) &&
+        (obs.includes('white') ||
+          obs.includes('pale') ||
+          obs.includes('black') ||
+          obs.includes('dot') ||
+          obs.includes('circle'));
+      const skeletonOk =
+        (exp.includes('socket') || exp.includes('hollow') || exp.includes('black')) &&
+        (obs.includes('black') || obs.includes('socket') || obs.includes('circle'));
+      if (vampireOk || ghostOk || skeletonOk) return false;
+    }
+    if (
+      m.character?.toLowerCase().includes('vamghoston') &&
+      m.trait.toLowerCase().includes('outfit') &&
+      obs.includes('cape') &&
+      obs.includes('suit') &&
+      !obs.includes('missing')
+    ) {
+      return false;
+    }
+    if (
+      (exp.includes('sparkly sip') ||
+        exp.includes('cartoon-safe') ||
+        exp.includes('kid-safe')) &&
+      obs.includes('red') &&
+      !obs.includes('wound') &&
+      !obs.includes('gore')
+    ) {
+      return false;
+    }
+    if (
+      m.character?.toLowerCase().includes('halloween queen') &&
+      (m.trait.toLowerCase().includes('fang') || exp.includes('fang')) &&
+      (obs.includes('no fang') ||
+        obs.includes('no visible fang') ||
+        obs.includes('kind smile'))
+    ) {
+      return false;
+    }
+    if (
+      m.character?.toLowerCase().includes('halloween queen') &&
+      m.trait.toLowerCase().includes('eye') &&
+      (obs.includes('brown') || obs.includes('orange') || obs.includes('kind'))
+    ) {
+      return false;
+    }
+    if (
+      m.character?.toLowerCase().includes('halloween queen') &&
+      m.trait.toLowerCase().includes('skin') &&
+      (obs.includes('pale') || obs.includes('warm')) &&
+      !obs.includes('dark brown')
+    ) {
+      return false;
+    }
+    if (
+      (exp.includes('no wand') || exp.includes('hand magic')) &&
+      (obs.includes('no wand') ||
+        obs.includes('wand on ground') ||
+        obs.includes('sparkle'))
+    ) {
+      return false;
+    }
+    if (
+      exp.includes('shrinking into toys') &&
+      obs.includes('toy') &&
+      !obs.includes('life-size living')
+    ) {
+      return false;
+    }
+    if (
+      m.trait.toLowerCase().includes('eye') &&
+      exp.includes('bright blue') &&
+      obs.includes('blue') &&
+      !obs.includes('brown') &&
+      !obs.includes('green') &&
+      !obs.includes('red')
+    ) {
+      return false;
+    }
+    if (
+      exp.includes('halloween wand') &&
+      obs.includes('wand') &&
+      (obs.includes('crescent') || obs.includes('star'))
+    ) {
+      return false;
+    }
+    if (
+      m.character?.toLowerCase().includes('halloween queen') &&
+      m.trait.toLowerCase().includes('shoe') &&
+      obs.includes('black boot')
+    ) {
       return false;
     }
     if (

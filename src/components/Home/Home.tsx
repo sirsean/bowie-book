@@ -52,6 +52,11 @@ const books: BookPreview[] = [
     title: 'The Evil Mermaid Queen',
     coverImage: '/books/the-evil-mermaid-queen/0-cover.webp',
   },
+  {
+    id: 'the-evil-halloween-queen',
+    title: 'The Evil Halloween Queen',
+    coverImage: '/books/the-evil-halloween-queen/0-cover.webp',
+  },
 ];
 
 /**

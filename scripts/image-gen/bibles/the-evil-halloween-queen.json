@@ -1,0 +1,334 @@
+{
+  "bookKey": "the-evil-halloween-queen",
+  "title": "The Evil Halloween Queen",
+  "notes": "Everyday Bowie is only pages 4–5 (page 5 is mid-transform). Halloween Bowie from page 5 onward. Vamghoston is ONE unit of three creatures (vampire + ghost + skeleton) who must always appear together, never solo. Queen zaps with crescent-moon hand magic (no wand). Kid-safe Halloween: cartoon, not gore. Everyday Bowie casual colors (orange tee, blue shorts, white sneakers) were not in the story dump; lock them for continuity.",
+  "characters": [
+    {
+      "id": "bowie",
+      "displayName": "Bowie",
+      "age": "7-year-old school-age girl",
+      "defaultVariantId": "human-everyday",
+      "forbidden": ["toddler proportions", "adult face", "teen fashion"],
+      "variants": [
+        {
+          "id": "human-everyday",
+          "label": "Everyday Bowie before Halloween convert",
+          "form": "human girl",
+          "hair": "blonde pigtails (two braids or two bundled tails), school-age",
+          "eyes": "bright blue",
+          "skin": "light warm skin",
+          "outfit": {
+            "top": "plain orange short-sleeve t-shirt (no moon graphic)",
+            "bottom": "simple dark blue shorts",
+            "shoes": "white sneakers",
+            "hairAccessory": "orange hair ties on the blonde pigtails"
+          },
+          "forbidden": [
+            "orange high ponytail",
+            "black long-sleeve moon shirt",
+            "frilly orange skirt",
+            "black tights",
+            "black boots",
+            "fingerless gloves",
+            "pink crescent moon shirt"
+          ]
+        },
+        {
+          "id": "halloween-transforming",
+          "label": "Bowie mid-conversion into Halloween Bowie",
+          "form": "mid-transformation: human-everyday dissolving into halloween-bowie",
+          "hair": "blonde pigtails visibly shifting into bright orange hair gathering up into a high ponytail (same girl, continuous identity)",
+          "eyes": "bright blue (same as human-everyday)",
+          "skin": "light warm skin (same as human-everyday)",
+          "outfit": {
+            "onePiece": "orange short-sleeve t-shirt and dark blue shorts partially dissolving into a black long-sleeve shirt with a pink crescent moon, black tights, and a frilly orange skirt; white sneakers mid-change into big black boots; black fingerless gloves appearing; Halloween Wand appearing in her hand",
+            "shoes": "white sneakers dissolving into big black boots",
+            "hairAccessory": "orange pigtail ties fading as hair lifts into a high ponytail",
+            "extras": ["glowing Halloween Wand with a pink-and-orange crescent or star tip"]
+          },
+          "forbidden": [
+            "different face or age from human-everyday Bowie",
+            "fully everyday with no Halloween Bowie cues",
+            "fully Halloween Bowie with no remaining everyday cues"
+          ]
+        },
+        {
+          "id": "halloween-bowie",
+          "label": "Halloween Bowie",
+          "form": "human girl in Halloween hero costume",
+          "hair": "bright orange hair worn up in a high ponytail",
+          "eyes": "bright blue",
+          "skin": "light warm skin",
+          "outfit": {
+            "top": "black long-sleeve shirt with a pink crescent moon on the chest",
+            "bottom": "frilly orange skirt over black tights",
+            "shoes": "big black boots",
+            "hairAccessory": "hair up in a high ponytail (no pigtails)",
+            "extras": [
+              "black fingerless gloves",
+              "glowing Halloween Wand with a pink-and-orange crescent or star tip"
+            ]
+          },
+          "forbidden": [
+            "blonde pigtails",
+            "orange short-sleeve t-shirt",
+            "dark blue shorts",
+            "white sneakers",
+            "purple t-shirt",
+            "orange crescent moon shirt (that moon is the queen's)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evil-halloween-queen",
+      "displayName": "Evil Halloween Queen",
+      "age": "adult cartoon Halloween villain (theatrical, not realistic-scary)",
+      "defaultVariantId": "queen-villain",
+      "variants": [
+        {
+          "id": "queen-villain",
+          "label": "Evil Halloween Queen powerful",
+          "form": "humanoid Halloween queen",
+          "hair": "very long black-and-orange hair (two-tone streaks), flowing past her waist",
+          "eyes": "glowing pumpkin-orange",
+          "skin": "pale white ghost-like skin",
+          "outfit": {
+            "top": "purple t-shirt with a big orange crescent moon on the chest",
+            "bottom": "black skirt (straight or slightly jagged Halloween hem OK)",
+            "shoes": "big black boots",
+            "extras": ["bright red lips", "vampire fangs", "crescent-moon hand magic (no wand)"]
+          },
+          "forbidden": [
+            "mermaid tail",
+            "crown required",
+            "Halloween Bowie's pink crescent moon shirt",
+            "blonde hair"
+          ]
+        },
+        {
+          "id": "queen-reforming",
+          "label": "Queen mid-reform into Nice Halloween Queen",
+          "form": "mid-transformation: queen-villain shrinking into queen-reformed",
+          "hair": "very long black-and-orange hair softening and looking friendlier (same character, continuous identity)",
+          "eyes": "kind warm orange-brown or brown eyes (mean glow fading or already gone)",
+          "skin": "pale white ghost-like skin, may look a bit warmer/friendlier",
+          "outfit": {
+            "top": "same purple t-shirt with orange crescent moon, now on a clearly MUCH smaller body than Halloween Bowie",
+            "bottom": "black skirt shrinking with her",
+            "shoes": "black boots (oversized-as-she-shrinks look is nice but regular black boots are OK)",
+            "extras": [
+              "vampire fangs shrinking away or already gone into a normal kind smile",
+              "red lips optional as they soften",
+              "villain magic fading into gentle sparkles (no wand required; a dropped staff on the ground is OK)"
+            ]
+          },
+          "forbidden": [
+            "still full-size adult villain queen",
+            "still showing big scary vampire fangs firmly",
+            "second separate nice queen besides the reforming queen"
+          ]
+        },
+        {
+          "id": "queen-reformed",
+          "label": "Nice Halloween Queen",
+          "form": "small friendly Halloween queen",
+          "hair": "long black-and-orange hair, softer and friendlier, not menacing",
+          "eyes": "kind warm orange-brown eyes",
+          "skin": "pale friendly skin",
+          "outfit": {
+            "top": "purple t-shirt with an orange crescent moon (same shirt, smaller and cute)",
+            "bottom": "black skirt (straight or slightly jagged Halloween hem OK)",
+            "shoes": "black boots (smaller, not stompy-scary)",
+            "extras": ["kind smile with normal teeth (no vampire fangs)"]
+          },
+          "forbidden": ["vampire fangs", "mean glowing glare", "full-size villain body"]
+        }
+      ]
+    },
+    {
+      "id": "vamghoston",
+      "displayName": "the Vamghoston",
+      "age": "three cartoon Halloween creatures who count as one team (not toddlers, not photoreal)",
+      "defaultVariantId": "vamghoston-villain",
+      "forbidden": [
+        "showing only one of the three",
+        "realistic gore",
+        "photoreal blood"
+      ],
+      "variants": [
+        {
+          "id": "vamghoston-villain",
+          "label": "Vamghoston villain trio",
+          "form": "exactly three creatures standing side by side as one team, always all together: (left) skeleton, (middle) vampire, (right) ghost",
+          "hair": "vampire has short slick black hair; ghost has no hair (smooth translucent head); skeleton has none (bare skull)",
+          "eyes": "vampire: red or orange-red cartoon eyes; ghost: simple cartoon ghost eyes (glowing pale, white dots, or small black dots all OK); skeleton: hollow black cartoon sockets (filled black circles OK)",
+          "skin": "vampire: pale; ghost: translucent white; skeleton: dry white bones",
+          "outfit": {
+            "onePiece": "THREE figures always together — Skeleton: classic white cartoon bones. Vampire: pale face, short slick black hair, tiny fangs, red or orange-red eyes, black cape (red lining OK) over a black suit (white shirt and red bow tie or necktie OK). Ghost: cute translucent white sheet-ghost with a visible friendly-spooky face, floating. Kid-safe cartoon, not gory.",
+            "shoes": "vampire wears black dress shoes; skeleton has bony feet (no shoes); ghost floats with no feet"
+          },
+          "forbidden": [
+            "missing skeleton",
+            "missing vampire",
+            "missing ghost",
+            "realistic blood",
+            "turning the trio into one fused monster body"
+          ]
+        },
+        {
+          "id": "vamghoston-toys",
+          "label": "Vamghoston as toys",
+          "form": "the same three characters as small toys sitting together (skeleton toy, vampire toy, ghost toy)",
+          "hair": "vampire toy has tiny slick black hair; ghost toy smooth; skeleton toy is a bone toy with no hair",
+          "eyes": "painted toy eyes: vampire red, ghost pale, skeleton black sockets",
+          "skin": "plastic/plush toy materials, not living flesh",
+          "outfit": {
+            "onePiece": "THREE small toys together: a white skeleton action-figure/plush, a tiny vampire doll with a black cape, and a round white ghost plush. Clearly toys for children to play with, not living monsters.",
+            "shoes": "toy-scale: vampire toy black shoes; skeleton toy bony feet; ghost toy no feet"
+          },
+          "forbidden": [
+            "life-size living monsters",
+            "showing only one toy",
+            "realistic gore"
+          ]
+        },
+        {
+          "id": "vamghoston-halloween-night",
+          "label": "Vamghoston as friendly Halloween-night monsters",
+          "form": "exactly three living creatures again, same identities as the villain trio, but friendly and not attacking: skeleton, vampire, ghost always together",
+          "hair": "vampire has short slick black hair; ghost has no hair; skeleton has none (bare skull)",
+          "eyes": "vampire: friendly red or orange-red cartoon eyes; ghost: simple cartoon ghost eyes (glowing pale, white dots, or small black dots all OK); skeleton: hollow black cartoon sockets (filled black circles OK)",
+          "skin": "vampire: pale; ghost: translucent white; skeleton: white bones",
+          "outfit": {
+            "onePiece": "THREE figures always together matching the villain trio's bodies (skeleton, vampire in black cape/suit, floating white ghost) but with kind silly faces. Vampire waves and mouths Hi. Ghost waves and mouths Goodbye. No blood-sucking.",
+            "shoes": "vampire wears black dress shoes; skeleton bony feet; ghost floats"
+          },
+          "forbidden": [
+            "blood sucking",
+            "missing one of the three",
+            "realistic gore"
+          ]
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "pageIndex": 0,
+      "sceneGoal": "Book cover: Evil Halloween Queen as the dramatic focus in Halloween Town; title area kept clear.",
+      "characters": [
+        { "characterId": "evil-halloween-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 1,
+      "sceneGoal": "Halloween Town in hot summer; the Evil Halloween Queen hiding in shade because it is too hot even at night.",
+      "characters": [
+        { "characterId": "evil-halloween-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 2,
+      "sceneGoal": "Clear portrait of the Evil Halloween Queen matching her locked look (pale ghost skin, long black-and-orange hair, purple moon t-shirt, red lips, fangs, black boots).",
+      "characters": [
+        { "characterId": "evil-halloween-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 3,
+      "sceneGoal": "Introduce the Vamghoston: skeleton, vampire, and ghost standing side by side as one team.",
+      "characters": [
+        { "characterId": "vamghoston", "variantId": "vamghoston-villain" }
+      ]
+    },
+    {
+      "pageIndex": 4,
+      "sceneGoal": "Everyday Bowie with blonde pigtails, orange t-shirt and blue shorts, excited for Halloween.",
+      "characters": [{ "characterId": "bowie", "variantId": "human-everyday" }]
+    },
+    {
+      "pageIndex": 5,
+      "sceneGoal": "Bowie mid-conversion into Halloween Bowie with her Halloween Wand; same girl, blonde pigtails becoming orange high ponytail, everyday clothes dissolving into the Halloween costume.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-transforming" }
+      ]
+    },
+    {
+      "pageIndex": 6,
+      "sceneGoal": "Halloween night street: the Vamghoston see a trick-or-treater and walk up.",
+      "characters": [
+        { "characterId": "vamghoston", "variantId": "vamghoston-villain" }
+      ]
+    },
+    {
+      "pageIndex": 7,
+      "sceneGoal": "Skeleton grabs the trick-or-treater into the vampire's hands; cartoon-safe sparkly sip; ghost gobbles them toward Halloween Town. Kid-safe, no realistic blood.",
+      "characters": [
+        { "characterId": "vamghoston", "variantId": "vamghoston-villain" }
+      ]
+    },
+    {
+      "pageIndex": 8,
+      "sceneGoal": "Halloween Bowie is grabbed; skeleton accidentally gobbles her to Halloween Town while the vampire does NOT sip her (he looks forgetful).",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" },
+        { "characterId": "vamghoston", "variantId": "vamghoston-villain" }
+      ]
+    },
+    {
+      "pageIndex": 9,
+      "sceneGoal": "Halloween Bowie in Halloween Town uses her wand to turn Halloween creatures back into humans and send them home.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" }
+      ]
+    },
+    {
+      "pageIndex": 10,
+      "sceneGoal": "Magic duel: Halloween Bowie zaps with her wand; the queen zaps the magic off Bowie with crescent-moon hand magic.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" },
+        { "characterId": "evil-halloween-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 11,
+      "sceneGoal": "Pumpkins and jack-o-lanterns shake and bounce; Halloween Bowie stands strong and the queen cannot hurt her.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" },
+        { "characterId": "evil-halloween-queen", "variantId": "queen-villain" }
+      ]
+    },
+    {
+      "pageIndex": 12,
+      "sceneGoal": "Queen mid-reform, shrinking much smaller than Halloween Bowie into the Nice Halloween Queen (same purple orange-moon shirt, fangs becoming a kind smile, hand magic fading — no wand). Scary monsters shrinking into toys in the background.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" },
+        { "characterId": "evil-halloween-queen", "variantId": "queen-reforming" }
+      ]
+    },
+    {
+      "pageIndex": 13,
+      "sceneGoal": "Vamghoston have become toys; other monsters are toys too; Halloween night moon hinting they can become monsters again only that night.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" },
+        { "characterId": "vamghoston", "variantId": "vamghoston-toys" },
+        { "characterId": "evil-halloween-queen", "variantId": "queen-reformed" }
+      ]
+    },
+    {
+      "pageIndex": 14,
+      "sceneGoal": "Friendly Halloween-night Vamghoston: vampire says Hi, ghost says Goodbye, then a silly sparkly ghost-poop swirl sends a kid gently home. No blood sucking.",
+      "characters": [
+        { "characterId": "vamghoston", "variantId": "vamghoston-halloween-night" }
+      ]
+    },
+    {
+      "pageIndex": 15,
+      "sceneGoal": "Happy ending: Halloween Bowie having fun on Halloween with candy, pumpkins, and friends.",
+      "characters": [
+        { "characterId": "bowie", "variantId": "halloween-bowie" }
+      ]
+    }
+  ]
+}
